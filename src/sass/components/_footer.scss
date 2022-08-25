@@ -5,7 +5,7 @@
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
-  padding: 30px 25px;
+  padding: 30px 0;
   color: #545454;
   background-color: #f7f7f7;
 
@@ -32,29 +32,21 @@
 .heart {
   fill: #ff6b08;
   margin: 0 10px;
-  
 }
 
-.goit-students {
-  margin: 0;
+.footer-btn {
   padding: 0;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.14;
   display: flex;
   align-items: center;
   border: transparent;
   background-color: transparent;
   position: relative;
-
   color: #545454;
 
   @media screen and (min-width: 768px) {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
     font-size: 16px;
     line-height: 1.19;
     color: #545454;
@@ -62,7 +54,7 @@
   }
 }
 
-.goit-students::after {
+.footer-btn::after {
   background-color: #545454;
   display: inline-block;
   position: absolute;
@@ -87,7 +79,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 8px;
 
   @media screen and (min-width: 768px) {
