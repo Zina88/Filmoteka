@@ -1,0 +1,1 @@
+import MovieApiService from "./fetch";
