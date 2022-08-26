@@ -1,3 +1,5 @@
 import '../sass/main.scss';
-import "./movieApiService";
+
+import '../js/movieApiService.js';
+// import '../js/onSearch.js';
 import '../js/footer-modal.js';
