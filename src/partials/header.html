@@ -1,22 +1,21 @@
-<header class="header">
+<header class="header header_home">
   <div class="container">
-    <div class="nav_section">
-      <a href="" class="link logo">
+    <nav class="nav">
+      <a href="/src/index.html" class="link logo">
         <svg class="logo_svg" width="24" height="24">
-          <use href="../images/symbol-defs.svg#film"></use>
+          <use class="logo_icons" href="./images/icons.svg#film"></use>         
         </svg>
         <span class="logo_text">Filmoteka </span>
-      </a>
-      <nav class="nav">
-        <ul class="list menu">
+      </a>     
+        <ul class="menu">
           <li class="menu_item">
-            <a href="" class="current link menu_link" data-key="home">Home</a>
+            <a href="/src/index.html" class="current link menu_link" data-key="home">HOME</a>
           </li>
           <li class="menu_item">
-            <a href="" class="link menu_link">My library</a>
+            <a href="/src/library.html" class="link menu_link">MY LIBRARY</a>
           </li>
         </ul>
-      </nav>
+      </nav>      
       <form id="search-form" class="search">
         <input
           class="search_input"
@@ -25,10 +24,10 @@
           name="searchQuery"
           data-key="search"
         />
-        <svg class="search_button-icon" width="12" height="12">
-          <use href="../images/symbol-defs.svg#search"></use>
+        <svg class="search_icon" width="12" height="12">
+          <use href="./images/icons.svg#search"></use>
         </svg>
       </form>
-    </div>
+    
   </div>
 </header>

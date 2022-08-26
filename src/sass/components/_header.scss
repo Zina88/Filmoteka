@@ -41,3 +41,116 @@
             }
     }
 }
+.header_home{
+  background-image: linear-gradient(
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)),
+        
+      url(/src/images/header-mob.jpg);
+      @media screen and (min-with: 768px) {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(/src/images/header-tab.jpg);
+            @media (min-device-pixel-ratio: 2),
+              (min-resolution: 192dpi),
+              (min-resolution: 2dppx) {
+                background-image: linear-gradient
+            (rgba(0,0, 0,0.56),rgba(0,0,0, 0.56)), url(/src/images/header-tab-2x.jpg);
+              }
+          }
+            @media screen and (min-with: 1024px) {
+              background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                url(/src/images/header-desk.jpg);
+
+              @media (min-device-pixel-ratio: 2),
+              (min-resolution: 192dpi),
+              (min-resolution: 2dppx) {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.56),
+                  rgba(0, 0, 0, 0.56)), url(/src/images/header-desk_2x.jpg);
+              }
+            }
+          
+        opacity: 0.9;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 54px; 
+  @media screen and (min-width: 768px) {
+      margin-bottom: 40px;
+    }
+  
+    
+}
+.menu{  
+display: flex;
+flex-direction: row;
+gap: 40px;
+@media screen and (min-width: 1280px) {
+    gap: 39px;
+  }
+}
+
+.search{
+
+position: relative;
+margin-right: auto;
+margin-left: auto;
+width: 298px;
+@media screen and (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+   width: 394px;
+  }
+
+}
+
+.search_input{
+  
+  width: 100%;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 0.5px solid $title-color;
+  font-size: 14px;
+  color:$title-color;
+  line-height: 1.14;
+  padding: 4px 0;
+ 
+  &::placeholder{
+    font-size: 14px;
+    line-height: 1.14;
+    color: $title-color;
+  }
+}
+.logo_text{
+  
+  margin-left: 8px;
+  font-weight: 500;
+  font-size: 30px;
+  color: $title-color;
+  @media screen and (max-width: 767px) {
+    display: none;
+    }
+  
+    @media screen and (min-width: 1280px) {
+      margin-left: 10px;
+    }
+ 
+}
+.menu_item{  
+  font-weight: 500;
+    font-size: 12px; 
+    line-height: 1.6;
+    color: $title-color;
+   
+}
+.search_icon{
+  position: absolute;
+ right: 1%;
+ top: 25%;
+  
+}
