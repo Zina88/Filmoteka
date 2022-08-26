@@ -44,7 +44,12 @@ function showPopularMovies() {
     appendMoviesMarkup(moviesArrayFromLocal)
 };
 
+
 function appendMoviesMarkup(Array) {
+    refs.gallery.insertAdjacentHTML("beforeend", creatMoviesMarkup(Array));
+}
+
+function creatMoviesMarkup(Array) {
     const moviesMarkup = Array.map(({
         title,
         name,
@@ -53,7 +58,8 @@ function appendMoviesMarkup(Array) {
         genre_ids: genresOfMovie,
         poster_path: poster = "images/plug-image.png",
         poster: poster = "images/"
-}) => `......`).joing("")
+    }) => `......`).joing("")
+    return moviesMarkup
 }
 
 
@@ -75,7 +81,7 @@ async function onSearch(e) {
         saveOnLocalStorage("movieArrayOnLocal", movieArray);
     }
 
-    // завантажуємо популярні фільми
-    showPopularMovies();   
+    appendMoviesMarkup(moviesArrayFromLocal)
+      
 }
 
