@@ -1,1 +1,2 @@
-import "./onSearch";
+// import "./onSearch";
+import "./js/movieApiService";
