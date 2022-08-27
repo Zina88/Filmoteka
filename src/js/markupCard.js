@@ -15,7 +15,7 @@ function createMoviesMarkup(Array) {
         poster: poster = "images/"
     }) => `<a href="${poster}">
     <li>
-        <img src="${poster}" alt="${title}">
+        <img class="card__image" src="${poster}" alt="${title}">
         <p>${title}</p>
         <div>
             <p>${genresOfMovie}</p>
