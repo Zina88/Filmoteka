@@ -20,18 +20,19 @@
 }
 
 .modal-box {
-    position: absolute;
-    padding: 15px;
-    outline: 1px solid $accent-color;
-    background-color: $title-color;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    width: 320px;
-    top: 0;
-    left: 50%;
+  position: absolute;
+  padding: 15px;
+  outline: 1px solid $accent-color;
+  background-color: $title-color;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  width: 320px;
+  top: 0;
+  left: 50%;
 
-   transform: translate(-50%, 2%) scale(1);
-   transition: transform 300ms $transition-timing-function;
+  transform: translate(-50%, 2%) scale(1);
+  transition: transform 300ms $transition-timing-function;
 
   @media screen and (min-width: $tablet) {
     width: 450px;
@@ -54,59 +55,58 @@
   }
 }
 
-.modal-box__btn{
-    fill: $primary-text-color;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
+.modal-box__btn {
+  fill: $primary-text-color;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    margin-left: auto;
-    width: 25px;
-    height: 25px;
+  margin-left: auto;
+  width: 25px;
+  height: 25px;
 
-    transition: fill 300ms $transition-timing-function, border-color 300ms $transition-timing-function;
+  transition: fill 300ms $transition-timing-function,
+    border-color 300ms $transition-timing-function;
 
-    &:hover,
-    &:focus{
-        fill: $accent-color;
-        border-color: $accent-color;
-    }
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+    border-color: $accent-color;
+  }
 }
 
-.grid{
-
-    @media screen and(min-width: $tablet){
+.grid {
+  @media screen and (min-width: $tablet) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-    }
- 
+  }
 }
 
-.grid-img{
-    outline: 1px solid $accent-color;
-    height: 400px;
-    margin-bottom: 10px;
+.grid-img {
+  outline: 1px solid $accent-color;
+  height: 400px;
+  margin-bottom: 10px;
 
-    @media screen and(min-width: $tablet){
+  @media screen and (min-width: $tablet) {
     height: 150px;
     margin-bottom: 0;
-    }
+  }
 
-    &:last-child{
-        @media screen and(max-width: 767px){
-                margin-bottom: 0;
-        }
+  &:last-child {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 0;
     }
+  }
 }
 
-.modal-title{
-    margin-top: 30px;
-    margin-bottom: 20px;
+.modal-title {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
