@@ -3,3 +3,4 @@ import '../js/onSearch.js';
 import '../js/footer-modal.js';
 import './saveMoviesOnLocal';
 import './header';
+import './loader';
