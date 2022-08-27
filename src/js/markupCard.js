@@ -16,10 +16,12 @@ export function createMoviesMarkup(Array) {
     }) => `<li class="card-item">
         <a class="card-link" href="https://image.tmdb.org/t/p/w500${poster}">
         <img class="card__image" src="https://image.tmdb.org/t/p/w500${poster}" alt="${title}">
+        <div class="card-discr">
         <p class="card-title">${title ? title : name}</p>
-        <div class="box">
-            <p class="card-genres">${getGenresFromLocal(genresOfMovie)}</p>
-            <p class="card-data">${releaseDate ? releaseDate.slice(0,4) : firstDate.slice(0,4)}</p>
+        <ul class="box">
+            <li class="card-genres">${getGenresFromLocal(genresOfMovie)}</li>
+            <li class="card-data">${releaseDate ? releaseDate.slice(0,4) : firstDate.slice(0,4)}</li>
+        </ul>
         </div>
         </a>    
     </li>`).join("")

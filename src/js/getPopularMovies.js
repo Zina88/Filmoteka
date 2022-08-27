@@ -3,9 +3,7 @@ import saveOnLocalStorage from "./saveMoviesOnLocal";
 import { STORAGE_KEY_MOVIES } from "./constants";
 import { appendMoviesMarkup } from "./markupCard";
 
-const refs = {
-    gallery: document.querySelector(".gallery")
-};
+
 const movieApiService = new MovieApiService();
 getPopularMovies();
 
