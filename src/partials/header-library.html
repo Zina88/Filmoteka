@@ -20,17 +20,15 @@
         </li>
       </ul>
     </nav>
-    <form id="search-form" class="search">
-      <input
-        class="search_input"
-        type="text"
-        placeholder="Movie search"
-        name="searchQuery"
-        data-key="search"
-      />
-      <svg class="search_icon" width="12" height="12">
-        <use href="/src/images/icons.svg#search"></use>
-      </svg>
-    </form>
+    <ul class="filter-list">
+      <li class="filter-list__item">
+        <button type="button" class="filter-list__btn is-active">
+          Watched
+        </button>
+      </li>
+      <li class="filter-list__item">
+        <button type="button" class="filter-list__btn">Queue</button>
+      </li>
+    </ul>
   </div>
 </header>
