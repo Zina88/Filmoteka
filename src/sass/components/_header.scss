@@ -19,6 +19,7 @@
       url(/src/images/bg-mylib-mb.png);
 
   @media screen and (min-with: 768px){
+    
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(/src/images/bg-mylib-tab.png);
 
@@ -30,9 +31,10 @@
           }
   }
     @media screen and (min-with: 1280px){
+   
       background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
           url(/src/images/bg-mylib-desk.png);
-
+         
           @media (min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
             (min-resolution: 2dppx) {
