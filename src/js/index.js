@@ -3,17 +3,6 @@ import '../sass/main.scss';
 const refs = {
     gallery: document.querySelector(".gallery")
 };
-
-
-
-
-
-
-
-
-
-
-
 function appendMoviesMarkup(Array) {
     refs.gallery.insertAdjacentHTML("beforeend", createMoviesMarkup(Array));   
 }
