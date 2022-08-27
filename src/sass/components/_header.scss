@@ -1,7 +1,7 @@
 .header{ 
    padding-top: 40px;
     min-height: 230px;
-    background-color: rgba(0, 0, 0, 0.56);
+    // background-color: rgba(0, 0, 0, 0.56);
   
     background-position: center;
     background-repeat: no-repeat;
@@ -43,23 +43,23 @@
 background-position: 50% bottom  ;
   
  background-image: linear-gradient(to right,
-      rgba(#000000, 0.56),
-      rgba(#000000, 0.56)),
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)),
     url(/src/images/home-header-mob.jpg);
 
   @media (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
     background-image: linear-gradient(to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)),
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)),
       url(/src/images/home-header-mob-2x.jpg);
   }
-    @media screen and (min-with: 768px) {
+     @media screen and (min-width: 768px) {
       background-image: linear-gradient(
         to right,
-        rgba(#000000, 0.56),
-        rgba(#000000, 0.56)
+      rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
       ),
       url(/src/images/home-header-tab-2x.jpg);
       
@@ -71,16 +71,16 @@ background-position: 50% bottom  ;
       (min-resolution: 2dppx) {
        background-image: linear-gradient(
           to right,
-          rgba(#000000, 0.56),
-          rgba(#000000, 0.56)
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
         ),
         url(/src/images/home-header-tab-2x.jpg);
      }      
     }
-        @media screen and (min-with: 1024px){
+         @media screen and (min-width: 1280px){
           background-image: linear-gradient(to right,
-                rgba(#000000, 0.56),
-                rgba(#000000, 0.56)),
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
               url(/src/images/home-header-desk.jpg);
             background-size: cover;
             background-position: 50% 50%;
@@ -90,8 +90,8 @@ background-position: 50% bottom  ;
             (min-resolution: 192dpi),
             (min-resolution: 2dppx) {
               background-image: linear-gradient(to right,
-                  rgba(#000000, 0.56),
-                  rgba(#000000, 0.56)),
+                  rgba(0, 0, 0, 0.56),
+                  rgba(0, 0, 0, 0.56)),
                 url(/src/images/home-header-desk-2x.jpg);
             }
         }
