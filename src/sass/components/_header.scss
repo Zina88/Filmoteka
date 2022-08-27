@@ -1,0 +1,47 @@
+.header{
+  display: flex;
+  padding-top: 20px;
+    min-height: 230px;
+    background-color: rgba(0, 0, 0, 0.56);
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media screen and (min-with: 1024px) {
+      min-height: 216px;
+    }
+    @media screen and (min-with: 768px) {
+      min-height: 219px;
+    }
+  }
+
+.header__mylib-container{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/bg-mylib-mb.jpg);
+
+  @media screen and (min-with: 768px){
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(/src/images/bg-mylib-tab.jpg);
+
+        @media (min-device-pixel-ratio: 2),
+          (min-resolution: 192dpi),
+          (min-resolution: 2dppx) {
+            background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(/src/images/bg-mylib-tab-2x.jpg);
+          }
+  }
+    @media screen and (min-with: 1024px){
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+          url(/src/images/bg-mylib-desk.jpg);
+
+          @media (min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+              background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(/src/images/bg-mylib-desk-2x.jpg);
+            }
+    }
+}
+.menu {
+  display: flex;
+  align-items: center;
+}
