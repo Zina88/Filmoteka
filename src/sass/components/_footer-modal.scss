@@ -81,7 +81,7 @@
 
 .grid{
 
-    @media screen and(min-width: $tablet){
+    @media screen and (min-width: $tablet){
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
@@ -94,13 +94,13 @@
     height: 400px;
     margin-bottom: 10px;
 
-    @media screen and(min-width: $tablet){
+    @media screen and (min-width: $tablet){
     height: 150px;
     margin-bottom: 0;
     }
 
     &:last-child{
-        @media screen and(max-width: 767px){
+        @media screen and (max-width: 767px){
                 margin-bottom: 0;
         }
     }
