@@ -1,3 +1,4 @@
+import getGenresFromLocal from "./getGenresFromLocal";
 export const refs = {
     gallery: document.querySelector(".gallery")
 };
@@ -15,12 +16,11 @@ export function createMoviesMarkup(Array) {
     }) => `<a href="https://image.tmdb.org/t/p/w500${poster}">
     <li>
         <img class="card__image" src="https://image.tmdb.org/t/p/w500${poster}" alt="${title}">
-        <p>${title}</p>
+        <p>${title ? title : name}</p>
         <div>
-            <p>${genresOfMovie}</p>
-            <p>${firstDate}</p>
-        </div>
-        
+            <p>${getGenresFromLocal(genresOfMovie)}</p>
+            <p>${releaseDate ? releaseDate.slice(0,4) : firstDate.slice(0,4)}</p>
+        </div>    
     </li>
 </a>`).join("")
     return moviesMarkup;
