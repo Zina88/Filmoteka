@@ -13,15 +13,15 @@ export function createMoviesMarkup(Array) {
         first_date: firstDate,
         genre_ids: genresOfMovie,
         poster_path: poster = "images/plug-image.png",
-    }) => `<a href="https://image.tmdb.org/t/p/w500${poster}">
-    <li>
+    }) => `<li class="card-item">
+        <a class="card-link" href="https://image.tmdb.org/t/p/w500${poster}">
         <img class="card__image" src="https://image.tmdb.org/t/p/w500${poster}" alt="${title}">
-        <p>${title ? title : name}</p>
-        <div>
-            <p>${getGenresFromLocal(genresOfMovie)}</p>
-            <p>${releaseDate ? releaseDate.slice(0,4) : firstDate.slice(0,4)}</p>
-        </div>    
-    </li>
-</a>`).join("")
+        <p class="card-title">${title ? title : name}</p>
+        <div class="box">
+            <p class="card-genres">${getGenresFromLocal(genresOfMovie)}</p>
+            <p class="card-data">${releaseDate ? releaseDate.slice(0,4) : firstDate.slice(0,4)}</p>
+        </div>
+        </a>    
+    </li>`).join("")
     return moviesMarkup;
 }
