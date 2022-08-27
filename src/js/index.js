@@ -1,5 +1,7 @@
 import '../sass/main.scss';
 import '../js/onSearch.js';
 import '../js/footer-modal.js';
-import "./saveMoviesOnLocal";
+
+import './loader';
+import './saveMoviesOnLocal';
 import '../js/pagination.js';
