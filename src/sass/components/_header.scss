@@ -1,17 +1,17 @@
 .header{ 
-  
-    padding-top: 40px;
+   padding-top: 40px;
     min-height: 230px;
     background-color: rgba(0, 0, 0, 0.56);
   
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-        
-    @media screen and (min-with: 768px) {
-      min-height: 216px;      
-    }
+    background-size: cover;  
+    @media screen and (min-width: 768px) {
+        min-height: 216px;
+      }
+   
   }
+
 
 .header__mylib-container{
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
