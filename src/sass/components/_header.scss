@@ -42,8 +42,7 @@
     }
 }
 
-.header_home{
-  
+.header_home{  
 background-position: 50% bottom;
   
  background-image: linear-gradient(to right,
@@ -65,7 +64,7 @@ background-position: 50% bottom;
       rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(/src/images/home-header-tab-2x.jpg);
+      url(/src/images/home-header-tab.jpg);
       
       background-position: 50% 50%;
    
@@ -173,6 +172,9 @@ width: 280px;
    width: 394px;
   }
 
+}
+.visually-hidden {
+  display: none;
 }
 
 .search_input{
