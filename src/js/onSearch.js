@@ -5,7 +5,6 @@ import getGenresFromLocal from './getGenresFromLocal';
 import { STORAGE_KEY_MOVIES } from './constants';
 import { appendMoviesMarkup, createMoviesMarkup } from './markupCard';
 const refs = {
-  gallery: document.querySelector(".gallery"),
   searchForm: document.querySelector('#search-form'),
   body: document.querySelector('body'),
 };
