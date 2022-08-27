@@ -1,18 +1,15 @@
-.header{
- 
-  padding-top: 20px;
-  min-height: 230px;   
+.header{ 
   
-  background-size: cover;
-  background-position: 50% bottom;
-  background-repeat: no-repeat;
-
-    @media screen and (min-with: 1024px) {
-      min-height: 216px;
-    }
+    padding-top: 40px;
+    min-height: 230px;
+    background-color: rgba(0, 0, 0, 0.56);
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+        
     @media screen and (min-with: 768px) {
-      min-height: 219px;
-       padding-top: 45px;
+      min-height: 216px;      
     }
   }
 
@@ -42,7 +39,10 @@
     }
 }
 .header_home{
-background-image: linear-gradient(to right,
+  
+background-position: 50% bottom  ;
+  
+ background-image: linear-gradient(to right,
       rgba(#000000, 0.56),
       rgba(#000000, 0.56)),
     url(/src/images/home-header-mob.jpg);
@@ -62,9 +62,9 @@ background-image: linear-gradient(to right,
         rgba(#000000, 0.56)
       ),
       url(/src/images/home-header-tab-2x.jpg);
-       background-size: cover;
+      
       background-position: 50% 50%;
-      background-repeat: no-repeat;
+   
 
       @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -75,7 +75,7 @@ background-image: linear-gradient(to right,
           rgba(#000000, 0.56)
         ),
         url(/src/images/home-header-tab-2x.jpg);
-     }
+     }      
     }
         @media screen and (min-with: 1024px){
           background-image: linear-gradient(to right,
@@ -95,7 +95,7 @@ background-image: linear-gradient(to right,
                 url(/src/images/home-header-desk-2x.jpg);
             }
         }
-       
+        
 }
 
 .nav{
@@ -106,8 +106,28 @@ background-image: linear-gradient(to right,
   @media screen and (min-width: 768px) {
       margin-bottom: 40px;
     }
-  
     
+}
+.logo_link{
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+}
+.logo_text {
+  margin-left: 8px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16667;
+  color: $title-color;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 10px;
+  }
+
 }
 .menu{  
 display: flex;
@@ -117,9 +137,26 @@ gap: 40px;
     gap: 39px;
   }
 }
+.menu_item {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+  color: $title-color;
+}
+
+.menu_link {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.current::after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: $notification-color;
+}
 
 .search{
-
 position: relative;
 margin-right: auto;
 margin-left: auto;
@@ -135,7 +172,6 @@ width: 280px;
 }
 
 .search_input{
-  
   width: 100%;
   background: transparent;
   outline: none;
@@ -151,32 +187,15 @@ width: 280px;
     line-height: 1.14;
     color: $title-color;
   }
+  &:focus{
+    border-color: $accent-color;
+      border-width: 1px;
+  }
 }
-.logo_text{
-  
-  margin-left: 8px;
-  font-weight: 500;
-  font-size: 30px;
-  color: $title-color;
-  @media screen and (max-width: 767px) {
-    display: none;
-    }
-  
-    @media screen and (min-width: 1280px) {
-      margin-left: 10px;
-    }
- 
-}
-.menu_item{  
-  font-weight: 500;
-    font-size: 12px; 
-    line-height: 1.6;
-    color: $title-color;
-   
-}
+
+
 .search_icon{
   position: absolute;
  right: 0;
- bottom: 9px;
-  
+ bottom: 9px;  
 }
