@@ -1,7 +1,11 @@
 import MovieApiService from "./movieApiService";
 import saveOnLocalStorage from "./saveMoviesOnLocal";
 import { STORAGE_KEY_MOVIES } from "./constants";
+import { appendMoviesMarkup } from "./markupCard";
 
+const refs = {
+    gallery: document.querySelector(".gallery")
+};
 const movieApiService = new MovieApiService();
 getPopularMovies();
 
@@ -17,6 +21,7 @@ export default async function getPopularMovies() {
             total_results: totalResults } = result;
 
         saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
+        appendMoviesMarkup(moviesArray);
     } catch (error){
         console.log(error)
     }

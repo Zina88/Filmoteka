@@ -1,10 +1,10 @@
-const refs = {
+export const refs = {
     gallery: document.querySelector(".gallery")
 };
-function appendMoviesMarkup(Array) {
+export function appendMoviesMarkup(Array) {
     refs.gallery.insertAdjacentHTML("beforeend", createMoviesMarkup(Array));   
 }
-function createMoviesMarkup(Array) {
+export function createMoviesMarkup(Array) {
     const moviesMarkup = Array.map(({
         title,
         name,
@@ -12,10 +12,9 @@ function createMoviesMarkup(Array) {
         first_date: firstDate,
         genre_ids: genresOfMovie,
         poster_path: poster = "images/plug-image.png",
-        poster: poster = "images/"
-    }) => `<a href="${poster}">
+    }) => `<a href="https://image.tmdb.org/t/p/w500${poster}">
     <li>
-        <img class="card__image" src="${poster}" alt="${title}">
+        <img class="card__image" src="https://image.tmdb.org/t/p/w500${poster}" alt="${title}">
         <p>${title}</p>
         <div>
             <p>${genresOfMovie}</p>
