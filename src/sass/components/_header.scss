@@ -13,7 +13,8 @@
   }
 
 
-.header__mylib-container{
+.header_library{
+ 
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(/src/images/bg-mylib-mb.jpg);
 
@@ -27,7 +28,7 @@
             background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(/src/images/bg-mylib-tab-2x.jpg);
           }
   }
-    @media screen and (min-with: 1024px){
+    @media screen and (min-with: 1280px){
       background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
           url(/src/images/bg-mylib-desk.jpg);
 

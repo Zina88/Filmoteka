@@ -1,39 +1,36 @@
-<header class="header">
-  <div class="container header__mylib-container">
-    <div class="nav_section">
-      <a href="" class="link logo">
+<header class="header header_library">
+  <div class="container">
+    <nav class="nav">
+      <a href="" class="logo_link">
         <svg class="logo_svg" width="24" height="24">
           <use href="/src/images/icons.svg#film"></use>
         </svg>
         <span class="logo_text">Filmoteka </span>
       </a>
-      <nav class="nav">
-        <ul class="list menu">
-          <li class="menu_item">
-            <a
-              href="/src/index.html"
-              class="current link menu_link"
-              data-key="home"
-              >Home</a
-            >
-          </li>
-          <li class="menu_item">
-            <a href="/src/library.html" class="link menu_link">My library</a>
-          </li>
-        </ul>
-      </nav>
-      <form id="search-form" class="search">
-        <input
-          class="search_input"
-          type="text"
-          placeholder="Movie search"
-          name="searchQuery"
-          data-key="search"
-        />
-        <svg class="search_button-icon" width="12" height="12">
-          <use href="/src/images/icons.svg#search"></use>
-        </svg>
-      </form>
-    </div>
+      <ul class="menu">
+        <li class="menu_item">
+          <a href="/src/index.html" class="link menu_link" data-key="home"
+            >HOME</a
+          >
+        </li>
+        <li class="menu_item">
+          <a href="/src/library.html" class="current link menu_link"
+            >My LIBRARY</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <form id="search-form" class="search">
+      <input
+        class="search_input"
+        type="text"
+        placeholder="Movie search"
+        name="searchQuery"
+        data-key="search"
+      />
+      <svg class="search_icon" width="12" height="12">
+        <use href="/src/images/icons.svg#search"></use>
+      </svg>
+    </form>
   </div>
 </header>
