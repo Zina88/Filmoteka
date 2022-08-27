@@ -81,6 +81,7 @@
   }
 }
 
+
 .grid {
   @media screen and (min-width: $tablet) {
     display: grid;
@@ -94,14 +95,17 @@
   height: 400px;
   margin-bottom: 10px;
 
+
   @media screen and (min-width: $tablet) {
     height: 150px;
     margin-bottom: 0;
   }
 
+
   &:last-child {
     @media screen and (max-width: 767px) {
       margin-bottom: 0;
+
     }
   }
 }
