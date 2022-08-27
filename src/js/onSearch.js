@@ -28,45 +28,45 @@ function showPopularMovies() {
   appendMoviesMarkup(moviesArrayFromLocal);
 }
 
-function appendMoviesMarkup(Array) {
-  refs.body.insertAdjacentHTML('beforeend', creatMoviesMarkup(Array));
-}
+// function appendMoviesMarkup(Array) {
+//   refs.body.insertAdjacentHTML('beforeend', creatMoviesMarkup(Array));
+// }
 
-function creatMoviesMarkup(Array) {
-  const moviesMarkup = Array.map(
-    ({
-      title,
-      name,
-      release_date: releaseDate,
-      first_date: firstDate,
-      genre_ids: genreIdsArray,
-      poster_path: poster = './src/images/plug-image.png',
-    }) => {
-      const genres = getGenresFromLocal(genreIdsArray);
+// function creatMoviesMarkup(Array) {
+//   const moviesMarkup = Array.map(
+//     ({
+//       title,
+//       name,
+//       release_date: releaseDate,
+//       first_date: firstDate,
+//       genre_ids: genreIdsArray,
+//       poster_path: poster = './src/images/plug-image.png',
+//     }) => {
+//       const genres = getGenresFromLocal(genreIdsArray);
 
-      console.log(genres);
-      const movieMarkup = `<div class="photo-card">
-                <a href="" class="gallery-link">
-                    <img src="https://image.tmdb.org/t/p/w500${poster}" alt="" loading = "lazy"/>
-                        <div class="info">
-                            <p class="title">
-                                ${title}
-                                
-                            </p>
-                            <p class="data">
-                                ${releaseDate}
-                            </p>
-                            <p class="genres">
-                                ${genres}
-                            </p>
-                        </div>
-                </a>       
-            </div>`;
-      return movieMarkup;
-    }
-  ).join('');
-  return moviesMarkup;
-}
+//       console.log(genres);
+//       const movieMarkup = `<div class="photo-card">
+//                 <a href="" class="gallery-link">
+//                     <img src="https://image.tmdb.org/t/p/w500${poster}" alt="" loading = "lazy"/>
+//                         <div class="info">
+//                             <p class="title">
+//                                 ${title}
+
+//                             </p>
+//                             <p class="data">
+//                                 ${releaseDate}
+//                             </p>
+//                             <p class="genres">
+//                                 ${genres}
+//                             </p>
+//                         </div>
+//                 </a>
+//             </div>`;
+//       return movieMarkup;
+//     }
+//   ).join('');
+//   return moviesMarkup;
+// }
 
 // async function onSearch(e) {
 //     e.preventDefault();
