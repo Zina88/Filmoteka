@@ -1,52 +1,37 @@
-// імпорт запитів до API
 import MovieApiService from "./movieApiService";
+import getPopularMovies from "./getPopularMovies";
+import saveAllGenres from "./saveAllGenres";
+import getGenresFromLocal from "./getGenresFromLocal";
+import { STORAGE_KEY_MOVIES } from "./constants";
 
-// посилання на елементи 
 const refs = {
-    searchForm: document.querySelector("#search-form")
+    searchForm: document.querySelector("#search-form"),
+    body: document.querySelector("body")
 }
 
-refs.searchForm.addEventListener("submit", onSearch);
-
-// створюємо екземпляр класу MovieApiService для запитів на сервер
 const movieApiService = new MovieApiService();
 
-// при першому відвідуванні сайту робимо запит за популярними і зберігаємо їх в локал
-async function getPopularMovies() {
-        
-    try {
-        const result = await movieApiService.popularMovies();
-    
-        const {
-            page: currentPage,
-            results: moviesArray,
-            total_page: totalPage,
-            total_results: totalResults } = result;
+// refs.searchForm.addEventListener("submit", onSearch);
 
-        saveOnLocalStorage("moviesArrayOnLocal", moviesArray);
-    } catch (error){
-        console.log(error)
-    }
-}
-
-function saveOnLocalStorage(key, value) {
-    localStorage.setItem("key", JSON.stringify(value));
-}
-
-// витягуємо дані з локал та рендеримо в розмітку популярних фільмів
+getPopularMovies()
+saveAllGenres() 
 showPopularMovies();
 
-function showPopularMovies() {
 
-    const moviesArrayFromLocal = JSON.parse(localStorage.getItem("moviesArrayOnLocal"));
-         
+
+
+
+// .............ТЕСТОВІ ФУНКЦІЇ..................
+function showPopularMovies() {
+    const moviesArrayFromLocal = JSON.parse(localStorage.getItem(STORAGE_KEY_MOVIES));
+
+    // console.log(moviesArrayFromLocal);
     // додаємо в розмітку популярні фільми (Аня підготує цю функцію)
     appendMoviesMarkup(moviesArrayFromLocal)
 };
 
-
 function appendMoviesMarkup(Array) {
-    refs.gallery.insertAdjacentHTML("beforeend", creatMoviesMarkup(Array));
+    refs.body.insertAdjacentHTML("beforeend", creatMoviesMarkup(Array));
 }
 
 function creatMoviesMarkup(Array) {
@@ -55,33 +40,57 @@ function creatMoviesMarkup(Array) {
         name,
         release_date: releaseDate,
         first_date: firstDate,
-        genre_ids: genresOfMovie,
-        poster_path: poster = "images/plug-image.png",
-        poster: poster = "images/"
-    }) => `......`).joing("")
-    return moviesMarkup
+        genre_ids: genreIdsArray,
+        poster_path: poster = "./src/images/plug-image.png",
+        
+    }) => {
+
+        const genres = getGenresFromLocal(genreIdsArray);
+
+        console.log(genres);
+        const movieMarkup = `<div class="photo-card">
+                <a href="" class="gallery-link">
+                    <img src="https://image.tmdb.org/t/p/w500${poster}" alt="" loading = "lazy"/>
+                        <div class="info">
+                            <p class="title">
+                                ${title}
+                                
+                            </p>
+                            <p class="data">
+                                ${releaseDate}
+                            </p>
+                            <p class="genres">
+                                ${genres}
+                            </p>
+                        </div>
+                </a>       
+            </div>`
+        return movieMarkup
+    }).join("")
+    return moviesMarkup  
 }
 
 
-async function onSearch(e) {
-    e.preventDefault();
-    const inputValue = e.currentTarget.elements.searchQuery.value.trim();
 
-    // робимо запит популярних фільмів і зберігаємо кожну сторінку в локал
+// async function onSearch(e) {
+//     e.preventDefault();
+//     const inputValue = e.currentTarget.elements.searchQuery.value.trim();
+
+//     // робимо запит популярних фільмів і зберігаємо кожну сторінку в локал
     
-    async function getMoviesBySearch() {
-        const result = await movieApiService.MoviesBySearch();
+//     async function getMoviesBySearch() {
+//         const result = await movieApiService.MoviesBySearch();
     
-        const {
-            page: currentPage,
-            results: movieArray,
-            total_page: totalPage,
-            total_results: totalResults } = result;
+//         const {
+//             page: currentPage,
+//             results: movieArray,
+//             total_page: totalPage,
+//             total_results: totalResults } = result;
 
-        saveOnLocalStorage("movieArrayOnLocal", movieArray);
-    }
+//         saveOnLocalStorage("movieArrayOnLocal", movieArray);
+//     }
 
-    appendMoviesMarkup(moviesArrayFromLocal)
+//     appendMoviesMarkup(moviesArrayFromLocal)
       
-}
+// }
 
