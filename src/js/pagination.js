@@ -9,7 +9,7 @@ const nextButton = document.querySelector("[data-action-next]");
 const previousButton = document.querySelector("[data-action-previous]");
 
 
-let currentPage = 6;
+let currentPage =6;
 
 async function totalMovieDisplay(currentPage = 1) {
 

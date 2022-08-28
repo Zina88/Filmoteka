@@ -8,8 +8,8 @@ export default class MovieApiService {
     this.page = 1;
   }
 
-  async popularMovies() {
-    const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`;
+  async popularMovies(pageNumber = 1) {
+    const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
 
     const response = await axios.get(urlPopular);
     return response.data;
@@ -41,3 +41,10 @@ export default class MovieApiService {
     this.searchQuery = newQuery;
   }
 }
+
+
+//   async popularMovies(pageNumber = 1) {
+//     const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
+
+// async popularMovies(pageNumber = 1) {
+//         const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
