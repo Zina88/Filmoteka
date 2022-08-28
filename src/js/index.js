@@ -5,3 +5,4 @@ import './error-search';
 import './loader';
 import './saveMoviesOnLocal';
 import '../js/pagination.js';
+import './top-button';
