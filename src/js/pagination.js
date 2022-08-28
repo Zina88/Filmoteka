@@ -152,7 +152,7 @@ function paginationBarBuilder(pageNumber, totalPages) {
 async function totalMovieDisplay(currentPage) {
   const popularMovies = await MovieSercher.popularMovies(currentPage);
   lastPageNumber = popularMovies.total_pages;
-  results = popularMovies.results;
+  let results = popularMovies.results;
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
     currentPage,
     lastPageNumber
