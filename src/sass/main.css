@@ -182,22 +182,27 @@ img {
 .header_library {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/bg-mylib-mb.png);
 }
-@media screen and (min-with: 768px) {
+@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .header_library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/bg-mylib-mb-2x.png);
+  }
+}
+@media screen and (min-width: 768px) {
   .header_library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/bg-mylib-tab.png);
   }
 }
-@media screen and (min-with: 768px) and (min-device-pixel-ratio: 2), screen and (min-with: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-with: 768px) and (min-resolution: 192dpi), screen and (min-with: 768px) and (min-resolution: 2dppx) {
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .header_library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/bg-mylib-tab-2x.png);
   }
 }
-@media screen and (min-with: 1280px) {
+@media screen and (min-width: 1280px) {
   .header_library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/bg-mylib-desk.png);
   }
 }
-@media screen and (min-with: 1280px) and (min-device-pixel-ratio: 2), screen and (min-with: 1280px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-with: 1280px) and (min-resolution: 192dpi), screen and (min-with: 1280px) and (min-resolution: 2dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 1280px) and (min-resolution: 192dpi), screen and (min-width: 1280px) and (min-resolution: 2dppx) {
   .header_library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/bg-mylib-desk-2x.png);
   }

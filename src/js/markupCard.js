@@ -32,3 +32,7 @@ export function createMoviesMarkup(Array) {
   ).join('');
   return moviesMarkup;
 }
+//function makeToUpperCase(title) {
+//  const upperTitle = title.toUpperCase();
+//  return upperTitle;
+//}

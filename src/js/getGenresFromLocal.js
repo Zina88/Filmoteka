@@ -5,10 +5,8 @@ export default function getGenresFromLocal(genreIdsArray) {
     localStorage.getItem(STORAGE_KEY_GENRES)
   );
   let genresOfMovie = [];
-  // console.log(genresArrayFromLocal);
 
   genreIdsArray.forEach(id => {
-    // console.log(id);
 
     const genreOfMovie = genresArrayFromLocal.find(genre => genre.id === id);
     genresOfMovie.push(genreOfMovie.name);
