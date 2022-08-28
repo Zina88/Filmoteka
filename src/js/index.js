@@ -7,4 +7,3 @@ import './saveMoviesOnLocal';
 import '../js/pagination.js';
 import './top-button';
 import './modal.js';
-
