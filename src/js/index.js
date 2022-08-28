@@ -5,3 +5,4 @@ import '../js/footer-modal.js';
 import './loader';
 import './saveMoviesOnLocal';
 import '../js/pagination.js';
+import './modal.js';
