@@ -19,7 +19,7 @@ export function createMoviesMarkup(Array) {
         <a class="card-link" href="https://image.tmdb.org/t/p/w500${poster}">
         <img class="card__image" src="https://image.tmdb.org/t/p/w500${poster}" alt="${title}">
         <div class="card-discr">
-        <p class="card-title">${title ? title : name}</p>
+        <p class="card-title">${title ? title.value.toUpperCase() : name.toUpperCase()}</p>
         <ul class="box">
             <li class="card-genres">${getGenresFromLocal(genresOfMovie)}</li>
             <li class="card-data">${
@@ -32,3 +32,7 @@ export function createMoviesMarkup(Array) {
   ).join('');
   return moviesMarkup;
 }
+//function makeToUpperCase(title) {
+//  const upperTitle = title.toUpperCase();
+//  return upperTitle;
+//}
