@@ -1,9 +1,9 @@
 import '../sass/main.scss';
 import '../js/onSearch.js';
 import '../js/footer-modal.js';
-import './error-search';
-import './loader';
-import './saveMoviesOnLocal';
+import '../js/error-search.js';
+import '../js/loader.js';
+import '../js/saveMoviesOnLocal.js';
 import '../js/pagination.js';
-import './top-button';
-import './modal.js';
+import '../js/top-button.js';
+import '../js/modal.js';
