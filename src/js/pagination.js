@@ -1,127 +1,235 @@
 // Oleh Lavrenko
 
-import MovieApiService from "../js/movieApiService";
+import MovieApiService from '../js/movieApiService';
+import { createMoviesMarkup } from '../js/markupCard.js';
 
-const totalPagesPlaceHolder = document.querySelector(".pages-container");
-const MovieSercher = new MovieApiService;
+// Left Wing Pagination Buttons
 
-const nextButton = document.querySelector("[data-action-next]");
-const previousButton = document.querySelector("[data-action-previous]");
+const previousButton = document.querySelector('[data-action-previous]');
+const firstPageButton = document.querySelector('[data-action-first]');
+const secondLeftButton = document.querySelector('[data-action-second]');
+const thirdLeftButton = document.querySelector('[data-action-third]');
+const leftDots = document.querySelector('.left-wing-dots');
+firstPageButton.style.display = 'none';
+leftDots.style.display = 'none';
+
+// Right Wing Pagination Buttons
+
+const thirdLastButton = document.querySelector('[data-action-last-third]');
+const secondLastButton = document.querySelector('[data-action-last-second]');
+const lastPageButton = document.querySelector('[data-action-last]');
+const lastPageButtonLabel = document.querySelector('[data-action-last] > p');
+const nextButton = document.querySelector('[data-action-next]');
+const rightDots = document.querySelector('.right-wing-dots');
 
 
-let currentPage =6;
+const totalPagesPlaceHolder = document.querySelector('.pages-container');
+const MovieSercher = new MovieApiService();
+const mainGallery = document.querySelector('.gallery');
 
-async function totalMovieDisplay(currentPage = 1) {
+let currentPage = 1;
+let lastPageNumber = undefined;
 
-  const popularMovies = await MovieSercher.popularMovies(currentPage);
+function paginationBarBuilder(pageNumber, totalPages) {
+  let totalPagesDisplay = '';
 
-  console.log(popularMovies);
-
-  let totalPagesDisplay = "";
-
-  if (currentPage === 1) {
-    totalPagesDisplay = `
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>
-    <p>${currentPage + 2}</p>
-    <p>&#67871&#67871&#67871</p>
-    <p>${popularMovies.total_pages}</p>`;
-    previousButton.style.display = "none";
-  } else if (currentPage === 2) {
-    totalPagesDisplay = `
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>
-    <p>${currentPage + 2}</p>
-    <p>&#67871&#67871&#67871</p>
-    <p>${popularMovies.total_pages}</p>`;
-    previousButton.style.display = "inline-flex";
-  } else if (currentPage === 3) {
-    totalPagesDisplay = `
-    <p>1</p> 
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>
-    <p>${currentPage + 2}</p>
-    <p>&#67871&#67871&#67871</p>
-    <p>${popularMovies.total_pages}</p>`;
-    previousButton.style.display = "inline-flex";
-  } else if (currentPage === 4) {
-    totalPagesDisplay = `
-    <p>1</p> 
-    <p>${currentPage - 2}</p>
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>
-    <p>${currentPage + 2}</p>
-    <p>&#67871&#67871&#67871</p>
-    <p>${popularMovies.total_pages}</p>`;
-    previousButton.style.display = "inline-flex";
-  } else if (currentPage === popularMovies.total_pages) {
-    totalPagesDisplay = `
-    <p>1</p> 
-    <p>${currentPage - 2}</p>
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>`;
-    nextButton.style.display = "none";
-  } else if (currentPage === (popularMovies.total_pages - 1)) {
-    totalPagesDisplay = `
-    <p>1</p> 
-    <p>&#67871&#67871&#67871</p>
-    <p>${currentPage - 2}</p>
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>`;
-    nextButton.style.display = "inline-flex";
-  } else if (currentPage === (popularMovies.total_pages - 2)) {
-    totalPagesDisplay = `
-    <p>1</p> 
-    <p>&#67871&#67871&#67871</p>
-    <p>${currentPage - 2}</p>
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>
-    <p>${currentPage + 2}</p>`;
-    nextButton.style.display = "inline-flex";
-  } else if (currentPage === (popularMovies.total_pages - 3)) {
-    totalPagesDisplay = `
-    <p>1</p> 
-    <p>&#67871&#67871&#67871</p>
-    <p>${currentPage - 2}</p>
-    <p>${currentPage - 1}</p>
-    <div class="current-page"><p>${currentPage}</p></div>
-    <p>${currentPage + 1}</p>
-    <p>${currentPage + 2}</p>
-    <p>${popularMovies.total_pages}</p>`;
-    nextButton.style.display = "inline-flex";
+  if (pageNumber === 1) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    startButtonsShow();
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'none';
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-block';
+  } else if (pageNumber === 2) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'none';
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-block';
+  } else if (pageNumber === 3) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-block';
+  } else if (pageNumber === 4) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-block';
+  } else if (pageNumber === totalPages) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    finnishButtonsShow();
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'none';
+    secondLastButton.style.display = 'none';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'inline-block';
+    rightDots.style.display = 'none';
+  } else if (pageNumber === totalPages - 1) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'none';
+    secondLastButton.style.display = 'none';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'inline-block';
+    rightDots.style.display = 'none';
+  } else if (pageNumber === totalPages - 2) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'none';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'inline-block';
+    rightDots.style.display = 'none';
+  } else if (pageNumber === totalPages - 3) {
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'inline-block';
+    rightDots.style.display = 'none';
   } else {
-    totalPagesDisplay = `
-      <p>1</p> 
-      <p>&#67871&#67871&#67871</p>
-      <p>${currentPage - 2}</p>
-      <p>${currentPage - 1}</p>
-      <div class="current-page"><p>${currentPage}</p></div>
-      <p>${currentPage + 1}</p>
-      <p>${currentPage + 2}</p>
-      <p>&#67871&#67871&#67871</p>
-      <p>${popularMovies.total_pages}</p>`;
-    previousButton.style.display = "inline-flex";
-    nextButton.style.display = "inline-flex";
+    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    allButtonsShow();
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
+    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
+    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    leftDots.style.display = 'inline-block';
+    rightDots.style.display = 'inline-block';
   }
-  totalPagesPlaceHolder.innerHTML = totalPagesDisplay;
+  return totalPagesDisplay;
+}
+
+async function totalMovieDisplay(currentPage) {
+  const popularMovies = await MovieSercher.popularMovies(currentPage);
+  lastPageNumber = popularMovies.total_pages;
+  results = popularMovies.results;
+  totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
+    currentPage,
+    lastPageNumber
+  );
+  mainGallery.innerHTML = createMoviesMarkup(results);
+  lastPageButtonLabel.innerHTML = lastPageNumber;
 }
 
 totalMovieDisplay(currentPage);
 
-nextButton.addEventListener("click", nextPage);
-previousButton.addEventListener("click", prevPage);
+// Standard Buttons
+
+nextButton.addEventListener('click', nextPage);
+previousButton.addEventListener('click', prevPage);
+firstPageButton.addEventListener('click', firstPage);
+lastPageButton.addEventListener('click', lastPage);
 
 function nextPage() {
   currentPage++;
   totalMovieDisplay(currentPage);
-};
+}
 
 function prevPage() {
   currentPage--;
   totalMovieDisplay(currentPage);
-};
+}
+
+function firstPage() {
+  currentPage = 1;
+  totalMovieDisplay(currentPage);
+}
+
+function lastPage() {
+  currentPage = lastPageNumber;
+  totalMovieDisplay(lastPageNumber);
+}
+
+// Left Neighbouring Buttons
+
+thirdLeftButton.addEventListener('click', prevPage);
+secondLeftButton.addEventListener('click', secondLeftShow);
+
+function secondLeftShow() {
+  currentPage -= 2;
+  totalMovieDisplay(currentPage);
+}
+
+// Right Neighbouring Buttons
+
+thirdLastButton.addEventListener('click', nextPage);
+secondLastButton.addEventListener('click', secondLastShow);
+
+function secondLastShow() {
+  currentPage += 2;
+  totalMovieDisplay(currentPage);
+}
+
+// ===========================
+
+function allButtonsShow() {
+  nextButton.style.display = 'inline-flex';
+  previousButton.style.display = 'inline-flex';
+  firstPageButton.style.display = 'inline-flex';
+  lastPageButton.style.display = 'inline-flex';
+}
+
+function startButtonsShow() {
+  previousButton.style.display = 'none';
+  firstPageButton.style.display = 'none';
+  nextButton.style.display = 'inline-flex';
+  lastPageButton.style.display = 'inline-flex';
+}
+
+function finnishButtonsShow() {
+  previousButton.style.display = 'inline-flex';
+  firstPageButton.style.display = 'inline-flex';
+  nextButton.style.display = 'none';
+  lastPageButton.style.display = 'none';
+}
