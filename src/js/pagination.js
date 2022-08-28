@@ -22,6 +22,7 @@ const lastPageButtonLabel = document.querySelector('[data-action-last] > p');
 const nextButton = document.querySelector('[data-action-next]');
 const rightDots = document.querySelector('.right-wing-dots');
 
+
 const totalPagesPlaceHolder = document.querySelector('.pages-container');
 const MovieSercher = new MovieApiService();
 const mainGallery = document.querySelector('.gallery');

@@ -40,3 +40,10 @@ export default class MovieApiService {
     this.searchQuery = newQuery;
   }
 }
+
+
+//   async popularMovies(pageNumber = 1) {
+//     const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
+
+// async popularMovies(pageNumber = 1) {
+//         const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
