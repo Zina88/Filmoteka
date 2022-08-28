@@ -2,7 +2,7 @@ import MovieApiService from './movieApiService';
 import saveOnLocalStorage from './saveMoviesOnLocal';
 import { STORAGE_KEY_MOVIES } from './constants';
 import { appendMoviesMarkup } from './markupCard';
-// import errorSearch from "./error-search.js "
+import errorSearch from "./error-search.js "
 
 
 const refs = {
