@@ -1,91 +1,42 @@
 import MovieApiService from './movieApiService';
-import getPopularMovies from './getPopularMovies';
-import saveAllGenres from './saveAllGenres';
-import getGenresFromLocal from './getGenresFromLocal';
+import saveOnLocalStorage from './saveMoviesOnLocal';
 import { STORAGE_KEY_MOVIES } from './constants';
-import { appendMoviesMarkup, createMoviesMarkup } from './markupCard';
+import { appendMoviesMarkup } from './markupCard';
+
+
 const refs = {
   searchForm: document.querySelector('#search-form'),
-  body: document.querySelector('body'),
 };
 
+refs.searchForm.addEventListener("submit", onSearch);
 const movieApiService = new MovieApiService();
 
-// refs.searchForm.addEventListener("submit", onSearch);
+async function onSearch(e) {
+  e.preventDefault();
+  const inputValue = e.currentTarget.elements.searchQuery.value.trim();
 
-getPopularMovies();
-saveAllGenres();
-// showPopularMovies();
+  if (inputValue === "") {
+    // .......Notification
+    console.log("input search query!")
+    return
+  }
 
-// .............ТЕСТОВІ ФУНКЦІЇ..................
-function showPopularMovies() {
-  const moviesArrayFromLocal = JSON.parse(
-    localStorage.getItem(STORAGE_KEY_MOVIES)
-  );
+  movieApiService.query = inputValue;
+  try {
+    const result = await movieApiService.moviesBySearch();
+    console.log(result);
 
-  // console.log(moviesArrayFromLocal);
-  // додаємо в розмітку популярні фільми (Аня підготує цю функцію)
-  appendMoviesMarkup(moviesArrayFromLocal);
+    const {
+      page: currentPage,
+      results: moviesArray,
+      total_page: totalPage,
+      total_results: totalResults,
+    } = result;
+
+    appendMoviesMarkup(moviesArray);
+    saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-// function appendMoviesMarkup(Array) {
-//   refs.body.insertAdjacentHTML('beforeend', creatMoviesMarkup(Array));
-// }
-
-// function creatMoviesMarkup(Array) {
-//   const moviesMarkup = Array.map(
-//     ({
-//       title,
-//       name,
-//       release_date: releaseDate,
-//       first_date: firstDate,
-//       genre_ids: genreIdsArray,
-//       poster_path: poster = './src/images/plug-image.png',
-//     }) => {
-//       const genres = getGenresFromLocal(genreIdsArray);
-
-//       console.log(genres);
-//       const movieMarkup = `<div class="photo-card">
-//                 <a href="" class="gallery-link">
-//                     <img src="https://image.tmdb.org/t/p/w500${poster}" alt="" loading = "lazy"/>
-//                         <div class="info">
-//                             <p class="title">
-//                                 ${title}
-
-//                             </p>
-//                             <p class="data">
-//                                 ${releaseDate}
-//                             </p>
-//                             <p class="genres">
-//                                 ${genres}
-//                             </p>
-//                         </div>
-//                 </a>
-//             </div>`;
-//       return movieMarkup;
-//     }
-//   ).join('');
-//   return moviesMarkup;
-// }
-
-// async function onSearch(e) {
-//     e.preventDefault();
-//     const inputValue = e.currentTarget.elements.searchQuery.value.trim();
-
-//     // робимо запит популярних фільмів і зберігаємо кожну сторінку в локал
-
-//     async function getMoviesBySearch() {
-//         const result = await movieApiService.MoviesBySearch();
-
-//         const {
-//             page: currentPage,
-//             results: movieArray,
-//             total_page: totalPage,
-//             total_results: totalResults } = result;
-
-//         saveOnLocalStorage("movieArrayOnLocal", movieArray);
-//     }
-
-//     appendMoviesMarkup(moviesArrayFromLocal)
-
-// }
