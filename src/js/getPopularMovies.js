@@ -17,9 +17,10 @@ export default async function getPopularMovies() {
       total_page: totalPage,
       total_results: totalResults,
     } = result;
-
-    saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
+    
     appendMoviesMarkup(moviesArray);
+    saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
+    
   } catch (error) {
     console.log(error);
   }
