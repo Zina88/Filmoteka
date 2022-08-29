@@ -6,12 +6,13 @@ import { openMovieCard } from './modalCardOpen';
 const refs = {
   gallery: document.querySelector('.gallery'),
   openModal: document.querySelector('.modal[data-modal]'),
-  closeModal: document.querySelector('.close-modal-btn'),
+  closeModal: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.backdropMovie'),
+  modal: document.querySelector('.movie-modal-wrap')
 };
 
 refs.gallery.addEventListener('click', onGalleryClick);
-refs.backdrop.addEventListener('click', onBackdropClick);
+refs.modal.addEventListener('click', onBackdropClick);
 refs.closeModal.addEventListener('click', onCloseModal);
 
 function onGalleryClick(e) {
@@ -30,15 +31,17 @@ function onGalleryClick(e) {
 function onOpenModal() {
   refs.backdrop.classList.remove('is-hidden');
   window.addEventListener('keydown', onTargetKeydown);
+  document.body.style.overflow = "hidden"; 
 }
 
 function onCloseModal() {
   refs.backdrop.classList.add('is-hidden');
   window.removeEventListener('keydown', onTargetKeydown);
+  document.body.style.overflow = "";
 }
 
 function onBackdropClick(e) {
-  if (e.currentTarget !== e.target) {
+  if (e.currentTarget === e.target) {
     onCloseModal();
   }
 }
