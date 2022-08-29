@@ -17,7 +17,7 @@ refs.closeModal.addEventListener('click', onCloseModal);
 
 function onGalleryClick(e) {
   e.preventDefault();
-  if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
+  if (e.target.nodeName !== "IMG" && e.target.nodeName !== "P" && e.target.nodeName !== "LI") {
     return;
   }
   onOpenModal();

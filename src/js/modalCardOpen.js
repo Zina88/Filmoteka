@@ -6,17 +6,19 @@ import getGenresFromLocal from './getGenresFromLocal';
 
 const ul = document.querySelector('.gallery');
 const refs = {
+    imgEl: document.querySelector('img'),
     titleEl: document.querySelector('.movie__title'),
-    voteEl: document.querySelector('.movie__info-wrap-item-vote'),
+    voteEl: document.querySelector('.vote-value'),
+    votesEl: document.querySelector('.votes-value'),
     popularityEl: document.querySelector('.movie__info-wrap-item-popularity'),
     origTitleEl: document.querySelector('.movie__info-wrap-item-name'),
     genreEl: document.querySelector('.movie__info-item'),
     aboutEl: document.querySelector('.movie-description'),
 }
 
-
 export function openMovieCard(evt) {
-    
+    console.dir(refs.imgEl);
+    console.dir(refs.titleEl);
     const clickOnCard = evt.target;
 
     // if (evt.target.nodeName !== "IMG" && evt.target.nodeName !== "P" && evt.target.nodeName !== "LI") {
@@ -29,6 +31,8 @@ export function openMovieCard(evt) {
     const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
     console.log(movie);
     const {
+        id: movieIdFromLocal,
+        poster_path: poster,
         title: titleMovie,
         vote_average: vote,
         vote_count: votes,
@@ -39,15 +43,14 @@ export function openMovieCard(evt) {
     } = movie;
 
 
-    console.dir(refs.titleEl);
+    refs.imgEl.crs = `https://image.tmdb.org/t/p/w500${poster}`;
+    console.log(refs.imgEl.crs);
     refs.titleEl.textContent = titleMovie;
-    refs.voteEl.textContent = `<span class="vote">${vote}</span> / ${votes}`;
+    refs.voteEl.textContent = vote;
+    refs.votesEl.textContent = votes;
     refs.popularityEl.textContent = popularity;
     refs.origTitleEl.textContent = originalTitle;
     refs.genreEl.textContent = getGenresFromLocal(genreIds);
     refs.aboutEl.textContent = about;
 }
 
-
-// $('parent_static').on('event', 'children_dinamic', handler);
- 
