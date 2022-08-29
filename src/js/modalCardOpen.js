@@ -4,9 +4,8 @@ import { STORAGE_KEY_MOVIES } from './constants';
 import getMovieFromLocal from './getMovieFromLocal';
 import getGenresFromLocal from './getGenresFromLocal';
 
-const ul = document.querySelector('.gallery');
 const refs = {
-    imgEl: document.querySelector('img'),
+    // imgEl: document.querySelector('img'),
     titleEl: document.querySelector('.movie__title'),
     voteEl: document.querySelector('.vote-value'),
     votesEl: document.querySelector('.votes-value'),
@@ -19,6 +18,7 @@ const refs = {
 export function openMovieCard(evt) {
     
     const clickOnCard = evt.target;
+    console.log(clickOnCard.src)
     const movieId = Number(clickOnCard.id);
     const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
     
@@ -34,8 +34,8 @@ export function openMovieCard(evt) {
         overview: about,
     } = movie;
 
-    refs.imgEl.crs = `https://image.tmdb.org/t/p/w500${poster}`;
-    
+    moviePoster = `https://image.tmdb.org/t/p/w500${poster}`;
+    document.img.src = moviePoster;
     refs.titleEl.textContent = titleMovie;
     refs.voteEl.textContent = vote;
     refs.votesEl.textContent = votes;
