@@ -1,7 +1,7 @@
 //Oksana Bulakh
 
 import { STORAGE_KEY_MOVIES } from './constants';
-import getMovieFromLocal from './getFromLocal';
+import getMovieFromLocal from './getMovieFromLocal';
 import getGenresFromLocal from './getGenresFromLocal';
 
 const ul = document.querySelector('.gallery');
