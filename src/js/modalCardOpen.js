@@ -1,7 +1,7 @@
 //Oksana Bulakh
 
 import { STORAGE_KEY_MOVIES } from './constants';
-import getMovieFromLocal from './getFromLocal';
+import getMovieFromLocal from './getMovieFromLocal';
 import getGenresFromLocal from './getGenresFromLocal';
 
 const ul = document.querySelector('.gallery');
@@ -17,19 +17,11 @@ const refs = {
 }
 
 export function openMovieCard(evt) {
-    console.dir(refs.imgEl);
-    console.dir(refs.titleEl);
+    
     const clickOnCard = evt.target;
-
-    // if (evt.target.nodeName !== "IMG" && evt.target.nodeName !== "P" && evt.target.nodeName !== "LI") {
-    //     return
-    // }
-    console.log(evt.target.nodeName)
-    // console.log(clickOnCard)
     const movieId = Number(clickOnCard.id);
-    // console.log(movieId)
     const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
-    console.log(movie);
+    
     const {
         id: movieIdFromLocal,
         poster_path: poster,
@@ -42,9 +34,8 @@ export function openMovieCard(evt) {
         overview: about,
     } = movie;
 
-
     refs.imgEl.crs = `https://image.tmdb.org/t/p/w500${poster}`;
-    console.log(refs.imgEl.crs);
+    
     refs.titleEl.textContent = titleMovie;
     refs.voteEl.textContent = vote;
     refs.votesEl.textContent = votes;
