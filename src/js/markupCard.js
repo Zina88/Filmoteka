@@ -13,7 +13,7 @@ export function createMoviesMarkup(Array) {
       title,
       name,
       release_date: releaseDate,
-      first_date: firstDate,
+      // first_date: firstDate,
       genre_ids: genresOfMovie,
       poster_path: poster = 'images/plug-image.png',
     }) => `<li class="card-item" id="${movieId}">
@@ -24,7 +24,8 @@ export function createMoviesMarkup(Array) {
         <ul class="box">
             <li class="card-genres" id="${movieId}">${getGenresFromLocal(genresOfMovie)}</li>
             <li class="card-data" id="${movieId}">${
-              releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
+              // releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
+              releaseDate ? releaseDate.slice(0, 4) : "Unknown"
             }</li>
         </ul>
         </div>
