@@ -5,19 +5,22 @@ import { openMovieCard } from './modalCardOpen';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
-  openModal: document.querySelector('[data-modal]'),
+  openModal: document.querySelector('.modal[data-modal]'),
   closeModal: document.querySelector('.close-modal-btn'),
   backdrop: document.querySelector('.backdropMovie'),
 };
 
 refs.gallery.addEventListener('click', onGalleryClick);
-refs.openModal.addEventListener('click', onOpenModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.closeModal.addEventListener('click', onCloseModal);
 
 function onGalleryClick(e) {
   e.preventDefault();
-  if (e.target.nodeName !== "IMG" && e.target.nodeName !== "P" && e.target.nodeName !== "LI") {
+  if (
+    e.target.nodeName !== 'IMG' &&
+    e.target.nodeName !== 'P' &&
+    e.target.nodeName !== 'LI'
+  ) {
     return;
   }
   onOpenModal();
