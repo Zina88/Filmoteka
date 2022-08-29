@@ -33,7 +33,6 @@ function onCloseModal() {
 //   if (e.currentTarget === e.target) {
 //     onCloseFooterModal();
 //   }
-// }
 
 //   if (isEscKey) {
 //     onCloseFooterModal();

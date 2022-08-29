@@ -6,12 +6,12 @@ import getGenresFromLocal from './getGenresFromLocal';
 
 const ul = document.querySelector('.gallery');
 const refs = {
-    titleEl: document.querySelector('madal .title'),
-    voteEl: document.querySelector('madal .vote'),
-    popularityEl: document.querySelector('modal .popularity'),
-    origTitleEl: document.querySelector('madal .title-origin'),
-    genreEl: document.querySelector('modal .genre'),
-    aboutEl: document.querySelector('madal .about'),
+    titleEl: document.querySelector('madal .movie__title'),
+    voteEl: document.querySelector('madal .movie__info-wrap-item-vote'),
+    popularityEl: document.querySelector('modal .movie__info-wrap-item-popularity'),
+    origTitleEl: document.querySelector('madal .movie__info-wrap-item-name'),
+    genreEl: document.querySelector('modal .movie__info-item'),
+    aboutEl: document.querySelector('madal .movie-description'),
 }
 
 ul.addEventListener("click", openMovieCard);
@@ -19,8 +19,7 @@ ul.addEventListener("click", openMovieCard);
 function openMovieCard(evt) {
     evt.preventDefault();
     const clickOnCard = evt.target;
-    
-// evt.target.nodeName !== "IMG" || evt.target.nodeName !== "P" || evt.target.nodeName !== "P"
+
     if (evt.target.nodeName !== "IMG" && evt.target.nodeName !== "P" && evt.target.nodeName !== "LI") {
         return
     }
