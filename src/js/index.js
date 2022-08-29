@@ -16,3 +16,5 @@ import './saveInLocalStorage';
 import '../js/pagination.js';
 import '../js/top-button.js';
 import '../js/modal.js';
+
+import '../js/displeyLibrary.js';
