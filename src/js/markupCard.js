@@ -5,6 +5,7 @@ const refs = {
 
 export function appendMoviesMarkup(Array) {
   refs.gallery.insertAdjacentHTML('beforeend', createMoviesMarkup(Array));
+  
 }
 export function createMoviesMarkup(Array) {
   const moviesMarkup = Array.map(
