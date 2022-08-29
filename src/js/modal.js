@@ -1,3 +1,8 @@
+import { STORAGE_KEY_MOVIES } from './constants';
+import getMovieFromLocal from './getMovieFromLocal';
+import getGenresFromLocal from './getGenresFromLocal';
+import { openMovieCard } from './modalCardOpen';
+
 const refs = {
   gallery: document.querySelector('.gallery'),
   openModal: document.querySelector('[data-modal]'),
@@ -16,6 +21,7 @@ function onGalleryClick(e) {
     return;
   }
   onOpenModal();
+  openMovieCard(e);
 }
 
 function onOpenModal() {
