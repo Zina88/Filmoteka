@@ -7,3 +7,5 @@ import '../js/saveMoviesOnLocal.js';
 import '../js/pagination.js';
 import '../js/top-button.js';
 import '../js/modal.js';
+
+import '../js/displeyLibrary.js';
