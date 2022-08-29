@@ -8,3 +8,10 @@ import './top-button';
 import './modal.js';
 import './getMovieFromLocal';
 import './modalCardOpen';
+import '../js/error-search.js';
+import '../js/loader.js';
+import '../js/saveMoviesOnLocal.js';
+import '../js/pagination.js';
+import '../js/top-button.js';
+import '../js/modal.js';
+

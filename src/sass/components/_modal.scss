@@ -1,6 +1,6 @@
 // --------------Backdrop-----------------/
 
-.backdrop {
+.backdropMovie {
   position: fixed;
   display: flex;
   align-items: center;
@@ -17,8 +17,7 @@
   opacity: 1;
   z-index: 300;
   padding: 20px;
-   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
- 
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   overflow: hidden;
   overflow-y: auto;
@@ -60,7 +59,7 @@
 
   background-color: white;
   overflow-y: auto;
-  transform: scale(1);
+  // transform: scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -132,13 +131,12 @@
 .movie__title {
   font-size: 20px;
   line-height: 1.15;
-  
+
   text-transform: uppercase;
   margin-bottom: 20px;
   @media screen and (min-width: 1280px) {
-      font-size: 30px;
-      line-height: 1.17;
-    
+    font-size: 30px;
+    line-height: 1.17;
   }
 }
 
@@ -166,8 +164,7 @@
   width: 108px;
   color: #8c8c8c;
   font-size: 12px;
-      line-height: 1.33;
-
+  line-height: 1.33;
 
   @media screen and (min-width: 1280px) {
     width: 152px;
@@ -197,7 +194,7 @@
 
   & > span:first-child {
     color: #ffffff;
-    background-color: #FF6B08;
+    background-color: #ff6b08;
   }
 }
 
@@ -243,7 +240,6 @@
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
-
 }
 
 .movie-description {
@@ -253,7 +249,6 @@
   font-size: 12px;
   line-height: 1.17;
   overflow-y: auto;
-
 }
 
 .movie__modal-btn-box {
@@ -271,8 +266,8 @@
   border-radius: 5px;
   background-color: #ffffff;
   cursor: pointer;
- 
-   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:first-child {
     margin-right: 15px;
@@ -280,15 +275,15 @@
 
   &:hover {
     color: #ffffff;
-    background-color:  #FF6B08;
-    border-color:  #FF6B08;
-     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #ff6b08;
+    border-color: #ff6b08;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &.added-to-storage {
-    background:  #FF6B08;
+    background: #ff6b08;
     color: #ffffff;
-    border: 1px solid  #FF6B08;
-     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #ff6b08;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media screen and (min-width: 767px) {
@@ -314,17 +309,15 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-
 
 .material-icons {
   color: #000000;
-   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: #FF6B08;
+    color: #ff6b08;
   }
 }
 

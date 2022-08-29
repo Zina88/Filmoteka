@@ -1,6 +1,6 @@
 // Oleh Lavrenko
 
-import MovieApiService from '../js/movieApiService';
+import MovieApiService from '../js/movieApiService.js';
 import { createMoviesMarkup } from '../js/markupCard.js';
 import saveOnLocalStorage from './saveInLocalStorage';
 import { STORAGE_KEY_MOVIES } from './constants';
@@ -23,7 +23,6 @@ const lastPageButton = document.querySelector('[data-action-last]');
 const lastPageButtonLabel = document.querySelector('[data-action-last] > p');
 const nextButton = document.querySelector('[data-action-next]');
 const rightDots = document.querySelector('.right-wing-dots');
-
 
 const totalPagesPlaceHolder = document.querySelector('.pages-container');
 const MovieSercher = new MovieApiService();
@@ -157,6 +156,8 @@ async function totalMovieDisplay(currentPage) {
   lastPageNumber = popularMovies.total_pages;
   results = popularMovies.results;
   saveOnLocalStorage(STORAGE_KEY_MOVIES, results);
+
+  let results = popularMovies.results;
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
     currentPage,
     lastPageNumber
