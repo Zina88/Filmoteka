@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop-footer {
   visibility: visible;
   position: fixed;
   top: 0;
@@ -15,7 +15,7 @@
   transition: opacity 250ms $transition-timing-function,
     visibility 250ms $transition-timing-function;
 
-  &.is-hidden {
+  &.is-hidden-footer {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
