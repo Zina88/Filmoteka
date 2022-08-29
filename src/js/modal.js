@@ -1,3 +1,8 @@
+import { STORAGE_KEY_MOVIES } from './constants';
+import getMovieFromLocal from './getMovieFromLocal';
+import getGenresFromLocal from './getGenresFromLocal';
+import { openMovieCard } from './modalCardOpen';
+
 const refs = {
   gallery: document.querySelector('.gallery'),
   openModal: document.querySelector('[data-modal]'),
@@ -12,10 +17,11 @@ refs.closeModal.addEventListener('click', onCloseModal);
 
 function onGalleryClick(e) {
   e.preventDefault();
-  if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
+  if (e.target.nodeName !== "IMG" && e.target.nodeName !== "P" && e.target.nodeName !== "LI") {
     return;
   }
   onOpenModal();
+  openMovieCard(e);
 }
 
 function onOpenModal() {

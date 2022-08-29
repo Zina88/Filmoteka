@@ -1,5 +1,7 @@
+//Oksana Bulakh
+
 import MovieApiService from './movieApiService';
-import saveOnLocalStorage from './saveMoviesOnLocal';
+import saveOnLocalStorage from './saveInLocalStorage';
 import { STORAGE_KEY_MOVIES } from './constants';
 import { appendMoviesMarkup } from './markupCard';
 import errorSearch from "./error-search.js "
@@ -35,12 +37,15 @@ async function onSearch(e) {
       total_results: totalResults,
     } = result;
 
+    if (moviesArray.length === 0) {
+      errorSearch('Search result is not successful. Enter the correct movie name.')
+      return
+    }
+
     appendMoviesMarkup(moviesArray);
     saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
   } catch (error) {
     console.log(error)
-    errorSearch('Search result is not successful. Enter the correct movie name.');
   }
-  
 }
 

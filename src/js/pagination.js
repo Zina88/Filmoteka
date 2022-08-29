@@ -2,6 +2,8 @@
 
 import MovieApiService from '../js/movieApiService.js';
 import { createMoviesMarkup } from '../js/markupCard.js';
+import saveOnLocalStorage from './saveInLocalStorage';
+import { STORAGE_KEY_MOVIES } from './constants';
 
 // Left Wing Pagination Buttons
 
@@ -153,6 +155,8 @@ async function totalMovieDisplay(currentPage) {
   const popularMovies = await MovieSercher.popularMovies(currentPage);
   lastPageNumber = popularMovies.total_pages;
   let results = popularMovies.results;
+  results = popularMovies.results;
+  saveOnLocalStorage(STORAGE_KEY_MOVIES, results);
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
     currentPage,
     lastPageNumber
