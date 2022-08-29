@@ -34,7 +34,7 @@ export function openMovieCard(evt) {
         overview: about,
     } = movie;
 
-    moviePoster = `https://image.tmdb.org/t/p/w500${poster}`;
+    const moviePoster = `https://image.tmdb.org/t/p/w500${poster}`;
     document.img.src = moviePoster;
     refs.titleEl.textContent = titleMovie;
     refs.voteEl.textContent = vote;

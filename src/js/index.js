@@ -6,6 +6,7 @@ import './loader';
 import '../js/pagination.js';
 import './top-button';
 import './modal.js';
+import './getGenresFromLocal'
 import './getFromLocal';
 import './getMovieFromLocal';
 import './modalCardOpen';
