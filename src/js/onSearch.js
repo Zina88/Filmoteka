@@ -5,6 +5,7 @@ import saveOnLocalStorage from './saveInLocalStorage';
 import { STORAGE_KEY_MOVIES } from './constants';
 import { appendMoviesMarkup } from './markupCard';
 import errorSearch from "./error-search.js "
+import { updatePaginationBar } from './pagination';
 
 
 const refs = {
@@ -33,7 +34,7 @@ async function onSearch(e) {
     const {
       page: currentPage,
       results: moviesArray,
-      total_page: totalPage,
+      total_pages: totalPage,
       total_results: totalResults,
     } = result;
 
@@ -41,7 +42,7 @@ async function onSearch(e) {
       errorSearch('Search result is not successful. Enter the correct movie name.')
       return
     }
-
+    updatePaginationBar(currentPage, totalPage)
     appendMoviesMarkup(moviesArray);
     saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
   } catch (error) {
