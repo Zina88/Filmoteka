@@ -1,36 +1,36 @@
 const refs = {
-  openModalBtn: document.querySelector('[data-modal-open]'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  modal: document.querySelector('[data-modal]'),
-  backdrop: document.querySelector('.backdrop'),
+  openModalFooter: document.querySelector('[data-modal-open]'),
+  closeModalFooter: document.querySelector('[data-modal-close]'),
+  modalFooter: document.querySelector('[data-modal]'),
+  backdropFooter: document.querySelector('.backdrop-footer'),
 };
 
-refs.openModalBtn.addEventListener('click', onOpenFooterModal);
-refs.closeModalBtn.addEventListener('click', onCloseFooterModal);
-refs.backdrop.addEventListener('click', onBackdropCloseModal);
+refs.openModalFooter.addEventListener('click', onOpenFooterModal);
+refs.closeModalFooter.addEventListener('click', onCloseFooterModal);
+refs.backdropFooter.addEventListener('click', onBackdropCloseFooterModal);
 
 function onOpenFooterModal() {
-  refs.modal.classList.remove('is-hidden');
-  window.addEventListener('keydown', onTargetKeydown);
+  refs.modalFooter.classList.remove('is-hidden-footer');
+  window.addEventListener('keydown', onTargetKeydownFooter);
 }
 
 function onCloseFooterModal() {
-  refs.modal.classList.add('is-hidden');
-  window.removeEventListener('keydown', onTargetKeydown);
+  refs.modalFooter.classList.add('is-hidden-footer');
+  window.removeEventListener('keydown', onTargetKeydownFooter);
 }
 
-function onTargetKeydown(e) {
+function onBackdropCloseFooterModal(e) {
+  if (e.currentTarget === e.target) {
+    onCloseFooterModal();
+  }
+}
+
+function onTargetKeydownFooter(e) {
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = e.code === ESC_KEY_CODE;
 
   if (isEscKey) {
     onCloseFooterModal();
-    window.removeEventListener('keydown', onTargetKeydown);
-  }
-}
-
-function onBackdropCloseModal(e) {
-  if (e.currentTarget === e.target) {
-    onCloseFooterModal();
+    window.removeEventListener('keydown', onTargetKeydownFooter);
   }
 }

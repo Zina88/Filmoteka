@@ -1,7 +1,7 @@
 const refs = {
   gallery: document.querySelector('.gallery'),
   openModal: document.querySelector('[data-modal]'),
-  closeModal: document.querySelector('[data-action="close-modal"]'),
+  closeModal: document.querySelector('.close-modal-btn'),
   backdrop: document.querySelector('.backdropMovie'),
 };
 
@@ -15,28 +15,30 @@ function onGalleryClick(e) {
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
     return;
   }
-  console.dir(e.target);
   onOpenModal();
 }
 
 function onOpenModal() {
-  console.log('open');
-  refs.backdrop.classList.toggle('is-hidden');
+  refs.backdrop.classList.remove('is-hidden');
+  window.addEventListener('keydown', onTargetKeydown);
 }
 
 function onCloseModal() {
-  console.log('open');
-  refs.backdrop.classList.toggle('is-hidden');
+  refs.backdrop.classList.add('is-hidden');
+  window.removeEventListener('keydown', onTargetKeydown);
 }
 
-// function onBackdropClick() {
-//   if (e.currentTarget === e.target) {
-//     onCloseFooterModal();
-//   }
-// }
+function onBackdropClick(e) {
+  if (e.currentTarget !== e.target) {
+    onCloseModal();
+  }
+}
 
-//   if (isEscKey) {
-//     onCloseFooterModal();
-//     window.removeEventListener('keydown', onTargetKeydown);
-//   }
-// }
+function onTargetKeydown(e) {
+  const ESC_KEY_CODE = 'Escape';
+  const isEscKey = e.code === ESC_KEY_CODE;
+
+  if (isEscKey) {
+    onCloseModal();
+  }
+}
