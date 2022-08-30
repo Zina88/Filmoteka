@@ -41,15 +41,15 @@ async function onSearch(e) {
 
   movieApiService.query = inputValue;
   try {
-    const responce = await movieApiService.moviesBySearch();
-    const moviesArray = responce.results;
+    const response = await movieApiService.moviesBySearch();
+    const moviesArray = response.results;
 
 
     if (moviesArray.length === 0) {
       errorSearch('Search result is not successful. Enter the correct movie name.')
       return
     }
-    updatePaginationBar(currentPage, totalPage)
+    updatePaginationBar(response.page, response.total_pages);
     appendMoviesMarkup(moviesArray);
     saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
   } catch (error) {
