@@ -14,13 +14,19 @@ export function createMoviesMarkup(Array) {
       name,
       release_date: releaseDate,
       // first_date: firstDate,
-      genre_ids: genresOfMovie,
+      genre_ids: genresIdsArray,
       poster_path,
     }) => {
       const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
-      const placeholderImg =
-        'https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg';
-      // console.dir(poster);
+      const placeholderImg = "https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg";
+
+      const genresOfMovie = getGenresFromLocal(genresIdsArray);
+      let genres;
+      if (genresOfMovie.length > 3) {
+        genres = `${getGenresFromLocal(genresIdsArray).slice(0, 3).join(", ")}, ...other`;
+        return
+      }
+      genres = getGenresFromLocal(genresIdsArray).join(", ");
       const movieMarkup = `<li class="card-item" id="${movieId}">
         <a class="card-link" id="${movieId}" href="${
         poster_path !== null ? poster : placeholderImg
@@ -31,9 +37,7 @@ export function createMoviesMarkup(Array) {
         <div class="card-discr">
         <p class="card-title" id="${movieId}">${title ? title : name}</p>
         <ul class="box">
-            <li class="card-genres" id="${movieId}">${getGenresFromLocal(
-        genresOfMovie
-      )}</li>
+            <li class="card-genres" id="${movieId}">${genres ? genres : "Unknown"}</li>
             <li class="card-data" id="${movieId}">${
         // releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
         releaseDate ? releaseDate.slice(0, 4) : 'Unknown'

@@ -151,11 +151,12 @@ function paginationBarBuilder(pageNumber, totalPages) {
   return totalPagesDisplay;
 }
 
-export const updatePaginationBar = (currentPage, lastPage) => {
-  
-  currentPageNumber = currentPage;
-  lastPageNumber = lastPage;
-
+export async function totalMovieDisplay(currentPage) {
+  const popularMovies = await MovieSercher.popularMovies(currentPage);
+  lastPageNumber = popularMovies.total_pages;
+  let results = popularMovies.results;
+  results = popularMovies.results;
+  saveOnLocalStorage(STORAGE_KEY_MOVIES, results);
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
     currentPage,
     lastPage
