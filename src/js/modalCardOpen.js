@@ -5,7 +5,6 @@ import getMovieFromLocal from './getMovieFromLocal';
 import getGenresFromLocal from './getGenresFromLocal';
 
 const refs = {
-    // imgEl: document.querySelector('img'),
     titleEl: document.querySelector('.movie__title'),
     voteEl: document.querySelector('.vote-value'),
     votesEl: document.querySelector('.votes-value'),
@@ -18,7 +17,6 @@ const refs = {
 export function openMovieCard(evt) {
     
     const clickOnCard = evt.target;
-    console.log(clickOnCard.src)
     const movieId = Number(clickOnCard.id);
     const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
     

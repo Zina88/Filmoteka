@@ -8,6 +8,7 @@
   padding: 30px 0;
   color: $second-color;
   background-color: $footer-background-color;
+  // min-height: 80px;
 
   @media screen and (min-width: $tablet) {
     font-size: 16px;
@@ -103,4 +104,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.gallery_section {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

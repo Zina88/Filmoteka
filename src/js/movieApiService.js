@@ -4,8 +4,10 @@ import axios from 'axios';
 import { API_KEY, BASE_URL } from './constants';
 
 export default class MovieApiService {
+  
+  static searchQuery = '';
+
   constructor() {
-    this.searchQuery = '';
     this.page = 1;
   }
 
@@ -15,12 +17,14 @@ export default class MovieApiService {
     const response = await axios.get(urlPopular);
     return response.data;
   }
-  async moviesBySearch() {
-    const urlSearch = `${BASE_URL}search/movie?language=en-US&include_adult=false&api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`;
+  async moviesBySearch(pageNumber = 1) {
+    const urlSearch = `${BASE_URL}search/movie?language=en-US&include_adult=false&api_key=${API_KEY}&query=${MovieApiService.searchQuery}&page=${pageNumber}`;
 
     const response = await axios.get(urlSearch);
     return response.data;
   }
+
+
   async allGenres() {
     const urlGenres = `${BASE_URL}genre/movie/list?language=en-US&api_key=${API_KEY}`;
 
@@ -36,10 +40,10 @@ export default class MovieApiService {
   }
 
   get query() {
-    return this.searchQuery;
+    return MovieApiService.searchQuery;
   }
   set query(newQuery) {
-    this.searchQuery = newQuery;
+    MovieApiService.searchQuery = newQuery;
   }
 }
 
