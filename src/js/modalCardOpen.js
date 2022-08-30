@@ -20,6 +20,8 @@ export async function openMovieCard(evt) {
     const clickOnCard = evt.target;
     const movieId = Number(clickOnCard.id);
     const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
+
+    
     
     const {
         id: movieIdFromLocal,
