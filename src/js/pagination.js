@@ -165,7 +165,7 @@ export const updatePaginationBar = (currentPage, lastPage) => {
 
 }
 
-async function totalMovieDisplay(currentPage) {
+export async function totalMovieDisplay(currentPage) {
 
   let moviesToShow = null;
 
