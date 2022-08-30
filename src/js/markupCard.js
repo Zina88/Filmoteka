@@ -13,7 +13,7 @@ export async function createMoviesMarkup(Array) {
       title,
       name,
       release_date: releaseDate,
-      genre_ids: genresIdsArray,
+      genre_ids: genresOfMovie,
       poster_path,
     }) => {
       const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -27,12 +27,10 @@ export async function createMoviesMarkup(Array) {
       }
       genres = genresOfMovie.join(", ");
       const movieMarkup = `<li class="card-item" id="${movieId}">
-        <a class="card-link" id="${movieId}" href="${
-        poster_path !== null ? poster : placeholderImg
-      }">
-        <img class="card__image" id="${movieId}" src="${
-        poster_path !== null ? poster : placeholderImg
-      }" alt="${title}">
+        <a class="card-link" id="${movieId}" href="${poster_path !== null ? poster : placeholderImg
+        }">
+        <img class="card__image" id="${movieId}" src="${poster_path !== null ? poster : placeholderImg
+        }" alt="${title}">
         <div class="card-discr">
         <p class="card-title" id="${movieId}">${title ? title : name}</p>
         <ul class="box">
@@ -52,7 +50,4 @@ export async function createMoviesMarkup(Array) {
   moviesMarkup = moviesMarkup.join('');
   return moviesMarkup;
 }
-//function makeToUpperCase(title) {
-//  const upperTitle = title.toUpperCase();
-//  return upperTitle;
-//}
+
