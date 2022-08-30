@@ -28,7 +28,7 @@ const totalPagesPlaceHolder = document.querySelector('.pages-container');
 const movieService = new MovieApiService();
 const mainGallery = document.querySelector('.gallery');
 
-let currentPage = 1;
+let currentPageNumber = 1;
 let lastPageNumber = null;
 
 function paginationBarBuilder(pageNumber, totalPages) {
@@ -152,7 +152,8 @@ function paginationBarBuilder(pageNumber, totalPages) {
 }
 
 export const updatePaginationBar = (currentPage, lastPage) => {
-
+  
+  currentPageNumber = currentPage;
   lastPageNumber = lastPage;
 
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
@@ -183,7 +184,7 @@ async function totalMovieDisplay(currentPage) {
   mainGallery.innerHTML = createMoviesMarkup(results);
 }
 
-totalMovieDisplay(currentPage);
+totalMovieDisplay(currentPageNumber);
 
 // Standard Buttons
 
@@ -193,22 +194,22 @@ firstPageButton.addEventListener('click', firstPage);
 lastPageButton.addEventListener('click', lastPage);
 
 function nextPage() {
-  currentPage++;
-  totalMovieDisplay(currentPage);
+  currentPageNumber++;
+  totalMovieDisplay(currentPageNumber);
 }
 
 function prevPage() {
-  currentPage--;
-  totalMovieDisplay(currentPage);
+  currentPageNumber--;
+  totalMovieDisplay(currentPageNumber);
 }
 
 function firstPage() {
-  currentPage = 1;
-  totalMovieDisplay(currentPage);
+  currentPageNumber = 1;
+  totalMovieDisplay(currentPageNumber);
 }
 
 function lastPage() {
-  currentPage = lastPageNumber;
+  currentPageNumber = lastPageNumber;
   totalMovieDisplay(lastPageNumber);
 }
 
@@ -218,8 +219,8 @@ thirdLeftButton.addEventListener('click', prevPage);
 secondLeftButton.addEventListener('click', secondLeftShow);
 
 function secondLeftShow() {
-  currentPage -= 2;
-  totalMovieDisplay(currentPage);
+  currentPageNumber -= 2;
+  totalMovieDisplay(currentPageNumber);
 }
 
 // Right Neighbouring Buttons
@@ -228,8 +229,8 @@ thirdLastButton.addEventListener('click', nextPage);
 secondLastButton.addEventListener('click', secondLastShow);
 
 function secondLastShow() {
-  currentPage += 2;
-  totalMovieDisplay(currentPage);
+  currentPageNumber += 2;
+  totalMovieDisplay(currentPageNumber);
 }
 
 // ===========================
