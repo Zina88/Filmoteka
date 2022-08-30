@@ -118,10 +118,15 @@ background-position: 50% bottom;
     }
     
 }
-.logo_link{
+.logo_link {
   cursor: pointer;
   align-items: center;
   display: flex;
+  transition: 255ms $transition-timing-function;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .logo_text {
   margin-left: 8px;
