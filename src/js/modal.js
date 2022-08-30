@@ -8,7 +8,8 @@ const refs = {
   openModal: document.querySelector('.modal[data-modal]'),
   closeModal: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.backdropMovie'),
-  modal: document.querySelector('.movie-modal-wrap')
+  modal: document.querySelector('.movie-modal-wrap'),
+
 };
 
 refs.gallery.addEventListener('click', onGalleryClick);
@@ -54,3 +55,9 @@ function onTargetKeydown(e) {
     onCloseModal();
   }
 }
+
+
+
+
+
+
