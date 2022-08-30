@@ -13,7 +13,6 @@ export function createMoviesMarkup(Array) {
       title,
       name,
       release_date: releaseDate,
-      // first_date: firstDate,
       genre_ids: genresOfMovie,
       poster_path,
     }) => {
@@ -45,7 +44,4 @@ export function createMoviesMarkup(Array) {
   ).join('');
   return moviesMarkup;
 }
-//function makeToUpperCase(title) {
-//  const upperTitle = title.toUpperCase();
-//  return upperTitle;
-//}
+
