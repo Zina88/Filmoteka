@@ -1,7 +1,6 @@
 import '../sass/main.scss';
-import './footer-modal';
 import './loader';
-
+import '../js/footer-modal.js';
 import './modal.js';
 import './getGenresFromLocal';
 import './getFromLocal';
