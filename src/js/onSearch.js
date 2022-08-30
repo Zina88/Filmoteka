@@ -20,11 +20,12 @@ refs.searchForm.addEventListener("submit", onSearch);
 const movieApiService = new MovieApiService();
 refs.input.addEventListener("input", debounce(onInputClearn, DEBOUNCE_DELAY));
 
+
 function onInputClearn() {
   if (refs.input.value.trim() === "") {
     totalMovieDisplay(1);
     errorSearch("Please, enter your search query.");
-      return
+    return
   }
 }
 
@@ -55,5 +56,6 @@ async function onSearch(e) {
   } catch (error) {
     console.log(error)
   }
+  movieApiService.query = "";
 }
 
