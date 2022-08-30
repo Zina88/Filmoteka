@@ -3,30 +3,29 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
-export function appendMoviesMarkup(Array) {
-  refs.gallery.insertAdjacentHTML('beforeend', createMoviesMarkup(Array));
+export async function appendMoviesMarkup(Array) {
+  refs.gallery.insertAdjacentHTML('beforeend', await createMoviesMarkup(Array));
 }
-export function createMoviesMarkup(Array) {
-  const moviesMarkup = Array.map(
-    ({
+export async function createMoviesMarkup(Array) {
+  let moviesMarkup = Array.map(
+    async ({
       id: movieId,
       title,
       name,
       release_date: releaseDate,
-      // first_date: firstDate,
       genre_ids: genresIdsArray,
       poster_path,
     }) => {
       const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
       const placeholderImg = "https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg";
 
-      const genresOfMovie = getGenresFromLocal(genresIdsArray);
+      const genresOfMovie = await getGenresFromLocal(genresIdsArray);
       let genres;
       if (genresOfMovie.length > 3) {
-        genres = `${getGenresFromLocal(genresIdsArray).slice(0, 3).join(", ")}, ...other`;
+        genres = `${genresOfMovie.slice(0, 3).join(", ")}, ...other`;
         return
       }
-      genres = getGenresFromLocal(genresIdsArray).join(", ");
+      genres = genresOfMovie.join(", ");
       const movieMarkup = `<li class="card-item" id="${movieId}">
         <a class="card-link" id="${movieId}" href="${
         poster_path !== null ? poster : placeholderImg
@@ -48,7 +47,9 @@ export function createMoviesMarkup(Array) {
     </li>`;
       return movieMarkup;
     }
-  ).join('');
+  );
+  moviesMarkup = await Promise.all(moviesMarkup);
+  moviesMarkup = moviesMarkup.join('');
   return moviesMarkup;
 }
 //function makeToUpperCase(title) {

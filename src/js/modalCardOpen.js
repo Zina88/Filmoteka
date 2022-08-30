@@ -15,7 +15,7 @@ const refs = {
     aboutEl: document.querySelector('.movie-description'),
 }
 
-export function openMovieCard(evt) {
+export async function openMovieCard(evt) {
     
     const clickOnCard = evt.target;
     const movieId = Number(clickOnCard.id);
@@ -34,8 +34,8 @@ export function openMovieCard(evt) {
     } = movie;
 
     saveOnLocalStorage(STORAGE_KEY_MOVIEID, movieIdFromLocal);
-
-    const genres = `${getGenresFromLocal(genreIds).join(", ")}`;
+    const rawGenres = await getGenresFromLocal(genreIds);
+    const genres = `${rawGenres.join(", ")}`;
     const moviePoster = `https://image.tmdb.org/t/p/w500${poster}`;
     document.img.src = moviePoster;
     refs.titleEl.textContent = titleMovie;
