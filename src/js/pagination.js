@@ -165,7 +165,11 @@ export const updatePaginationBar = (currentPage, lastPage) => {
 
 }
 
-async function totalMovieDisplay(currentPage) {
+export async function totalMovieDisplay(currentPage) {
+
+
+
+
 
   let moviesToShow = null;
 
@@ -181,7 +185,7 @@ async function totalMovieDisplay(currentPage) {
 
   updatePaginationBar(currentPage, moviesToShow.total_pages);
 
-  mainGallery.innerHTML = createMoviesMarkup(results);
+  mainGallery.innerHTML = await createMoviesMarkup(results);
 }
 
 totalMovieDisplay(currentPageNumber);

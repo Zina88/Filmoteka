@@ -7,10 +7,6 @@ export default class MovieApiService {
   
   static searchQuery = '';
 
-  constructor() {
-    this.page = 1;
-  }
-
   async popularMovies(pageNumber = 1) {
     const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
 
@@ -24,19 +20,11 @@ export default class MovieApiService {
     return response.data;
   }
 
-
   async allGenres() {
     const urlGenres = `${BASE_URL}genre/movie/list?language=en-US&api_key=${API_KEY}`;
 
     const response = await axios.get(urlGenres);
     return response.data.genres;
-  }
-
-  resetPage() {
-    this.page = 1;
-  }
-  incrementPage() {
-    this.page += 1;
   }
 
   get query() {
@@ -47,9 +35,3 @@ export default class MovieApiService {
   }
 }
 
-
-//   async popularMovies(pageNumber = 1) {
-//     const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;
-
-// async popularMovies(pageNumber = 1) {
-//         const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}`;

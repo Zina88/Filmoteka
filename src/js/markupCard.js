@@ -3,12 +3,12 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
-export function appendMoviesMarkup(Array) {
-  refs.gallery.insertAdjacentHTML('beforeend', createMoviesMarkup(Array));
+export async function appendMoviesMarkup(Array) {
+  refs.gallery.insertAdjacentHTML('beforeend', await createMoviesMarkup(Array));
 }
-export function createMoviesMarkup(Array) {
-  const moviesMarkup = Array.map(
-    ({
+export async function createMoviesMarkup(Array) {
+  let moviesMarkup = Array.map(
+    async ({
       id: movieId,
       title,
       name,
@@ -17,9 +17,15 @@ export function createMoviesMarkup(Array) {
       poster_path,
     }) => {
       const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
-      const placeholderImg =
-        'https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg';
-      // console.dir(poster);
+      const placeholderImg = "https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg";
+
+      const genresOfMovie = await getGenresFromLocal(genresIdsArray);
+      let genres;
+      if (genresOfMovie.length > 3) {
+        genres = `${genresOfMovie.slice(0, 3).join(", ")}, ...other`;
+        return
+      }
+      genres = genresOfMovie.join(", ");
       const movieMarkup = `<li class="card-item" id="${movieId}">
         <a class="card-link" id="${movieId}" href="${poster_path !== null ? poster : placeholderImg
         }">
@@ -28,9 +34,7 @@ export function createMoviesMarkup(Array) {
         <div class="card-discr">
         <p class="card-title" id="${movieId}">${title ? title : name}</p>
         <ul class="box">
-            <li class="card-genres" id="${movieId}">${getGenresFromLocal(
-        genresOfMovie
-      )}</li>
+            <li class="card-genres" id="${movieId}">${genres ? genres : "Unknown"}</li>
             <li class="card-data" id="${movieId}">${
         // releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
         releaseDate ? releaseDate.slice(0, 4) : 'Unknown'
@@ -41,7 +45,9 @@ export function createMoviesMarkup(Array) {
     </li>`;
       return movieMarkup;
     }
-  ).join('');
+  );
+  moviesMarkup = await Promise.all(moviesMarkup);
+  moviesMarkup = moviesMarkup.join('');
   return moviesMarkup;
 }
 
