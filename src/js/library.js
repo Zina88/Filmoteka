@@ -1,0 +1,11 @@
+import '../sass/main.scss';
+import './loader';
+import '../js/footer-modal.js';
+import './modal.js';
+import './top-button';
+import './getGenresFromLocal';
+import './getFromLocal';
+import './getMovieFromLocal';
+import './modalCardOpen';
+import './saveInLocalStorage';
+import '../js/displeyLibrary.js';

@@ -7,6 +7,7 @@ import { totalMovieDisplay } from './pagination';
 import { STORAGE_KEY_MOVIES, DEBOUNCE_DELAY } from './constants';
 import { appendMoviesMarkup } from './markupCard';
 import errorSearch from "./error-search.js "
+import { updatePaginationBar } from './pagination';
 
 
 const refs = {
@@ -43,11 +44,12 @@ async function onSearch(e) {
     const responce = await movieApiService.moviesBySearch();
     const moviesArray = responce.results;
 
+
     if (moviesArray.length === 0) {
       errorSearch('Search result is not successful. Enter the correct movie name.')
       return
     }
-
+    updatePaginationBar(currentPage, totalPage)
     appendMoviesMarkup(moviesArray);
     saveOnLocalStorage(STORAGE_KEY_MOVIES, moviesArray);
   } catch (error) {

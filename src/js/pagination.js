@@ -1,7 +1,7 @@
 // Oleh Lavrenko
 
 import MovieApiService from '../js/movieApiService.js';
-import { createMoviesMarkup } from '../js/markupCard.js';
+import { appendMoviesMarkup, createMoviesMarkup } from '../js/markupCard.js';
 import saveOnLocalStorage from './saveInLocalStorage';
 import { STORAGE_KEY_MOVIES } from './constants';
 
@@ -25,11 +25,11 @@ const nextButton = document.querySelector('[data-action-next]');
 const rightDots = document.querySelector('.right-wing-dots');
 
 const totalPagesPlaceHolder = document.querySelector('.pages-container');
-const MovieSercher = new MovieApiService();
+const movieService = new MovieApiService();
 const mainGallery = document.querySelector('.gallery');
 
-let currentPage = 1;
-let lastPageNumber = undefined;
+let currentPageNumber = 1;
+let lastPageNumber = null;
 
 function paginationBarBuilder(pageNumber, totalPages) {
   let totalPagesDisplay = '';
@@ -159,13 +159,33 @@ export async function totalMovieDisplay(currentPage) {
   saveOnLocalStorage(STORAGE_KEY_MOVIES, results);
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
     currentPage,
-    lastPageNumber
+    lastPage
   );
-  mainGallery.innerHTML = createMoviesMarkup(results);
-  lastPageButtonLabel.innerHTML = lastPageNumber;
+
+  lastPageButtonLabel.innerHTML = lastPage;
+
 }
 
-totalMovieDisplay(currentPage);
+async function totalMovieDisplay(currentPage) {
+
+  let moviesToShow = null;
+
+  if (movieService.query) {
+    moviesToShow = await movieService.moviesBySearch(currentPage);
+  } else {
+    moviesToShow = await movieService.popularMovies(currentPage);
+  };
+
+  let results = moviesToShow.results;
+  results = moviesToShow.results;
+  saveOnLocalStorage(STORAGE_KEY_MOVIES, results);
+
+  updatePaginationBar(currentPage, moviesToShow.total_pages);
+
+  mainGallery.innerHTML = createMoviesMarkup(results);
+}
+
+totalMovieDisplay(currentPageNumber);
 
 // Standard Buttons
 
@@ -175,22 +195,22 @@ firstPageButton.addEventListener('click', firstPage);
 lastPageButton.addEventListener('click', lastPage);
 
 function nextPage() {
-  currentPage++;
-  totalMovieDisplay(currentPage);
+  currentPageNumber++;
+  totalMovieDisplay(currentPageNumber);
 }
 
 function prevPage() {
-  currentPage--;
-  totalMovieDisplay(currentPage);
+  currentPageNumber--;
+  totalMovieDisplay(currentPageNumber);
 }
 
 function firstPage() {
-  currentPage = 1;
-  totalMovieDisplay(currentPage);
+  currentPageNumber = 1;
+  totalMovieDisplay(currentPageNumber);
 }
 
 function lastPage() {
-  currentPage = lastPageNumber;
+  currentPageNumber = lastPageNumber;
   totalMovieDisplay(lastPageNumber);
 }
 
@@ -200,8 +220,8 @@ thirdLeftButton.addEventListener('click', prevPage);
 secondLeftButton.addEventListener('click', secondLeftShow);
 
 function secondLeftShow() {
-  currentPage -= 2;
-  totalMovieDisplay(currentPage);
+  currentPageNumber -= 2;
+  totalMovieDisplay(currentPageNumber);
 }
 
 // Right Neighbouring Buttons
@@ -210,8 +230,8 @@ thirdLastButton.addEventListener('click', nextPage);
 secondLastButton.addEventListener('click', secondLastShow);
 
 function secondLastShow() {
-  currentPage += 2;
-  totalMovieDisplay(currentPage);
+  currentPageNumber += 2;
+  totalMovieDisplay(currentPageNumber);
 }
 
 // ===========================
