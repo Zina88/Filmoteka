@@ -1,6 +1,4 @@
-import { STORAGE_KEY_MOVIES } from './constants';
-import getMovieFromLocal from './getFromLocal';
-import getGenresFromLocal from './getGenresFromLocal';
+import { STORAGE_KEY_MOVIEID  } from './constants';
 import { openMovieCard } from './modalCardOpen';
 
 const refs = {
@@ -38,6 +36,7 @@ function onCloseModal() {
   refs.backdrop.classList.add('is-hidden');
   window.removeEventListener('keydown', onTargetKeydown);
   document.body.style.overflow = "";
+  localStorage.removeItem(STORAGE_KEY_MOVIEID);
 }
 
 function onBackdropClick(e) {
