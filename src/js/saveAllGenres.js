@@ -11,6 +11,8 @@ export default async function saveAllGenres() {
     const genresArray = await movieApiService.allGenres();
 
     saveOnLocalStorage(STORAGE_KEY_GENRES, genresArray);
+    
+    return genresArray;
   } catch (error) {
     console.log(error);
   }
