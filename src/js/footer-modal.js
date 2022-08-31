@@ -12,11 +12,13 @@ refs.backdropFooter.addEventListener('click', onBackdropCloseFooterModal);
 function onOpenFooterModal() {
   refs.modalFooter.classList.remove('is-hidden-footer');
   window.addEventListener('keydown', onTargetKeydownFooter);
+  document.body.style.overflow = "hidden"; 
 }
 
 function onCloseFooterModal() {
   refs.modalFooter.classList.add('is-hidden-footer');
   window.removeEventListener('keydown', onTargetKeydownFooter);
+  document.body.style.overflow = "";
 }
 
 function onBackdropCloseFooterModal(e) {
