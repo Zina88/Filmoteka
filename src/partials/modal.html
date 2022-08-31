@@ -1,14 +1,12 @@
-
-  
-  <div class="backdropMovie is-hidden" data-index="backdrop">
-    <div class="movie-modal-wrap">
+<div class="backdropMovie is-hidden" data-index="backdrop">
+  <div class="movie-modal-wrap">
     <div class="movie modal" data-index="modal" data-modal>
       <div class="movie__image-wrap">
         <img
           src="https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg"
           alt="Movie img"
           class="movie__img modal-poster"
-          name="img"
+          id="img"
         />
       </div>
       <div class="movie__content-wrap">
@@ -17,7 +15,10 @@
           <ul class="movie__info-wrap-list list">
             <li class="movie__info-wrap-item">
               <p class="movie__info-wrap-item-type">Vote / Votes</p>
-              <p class="movie__info-wrap-item-vote"><span class="vote-value"></span> / <span class="votes-value"></span></p>
+              <p class="movie__info-wrap-item-vote">
+                <span class="vote-value"></span> /
+                <span class="votes-value"></span>
+              </p>
             </li>
             <li class="movie__info-wrap-item">
               <p class="movie__info-wrap-item-type">Popularity</p>
@@ -38,27 +39,34 @@
           </ul>
         </div>
         <p class="about-movie-title">About</p>
-        <p class="movie-description">
-          
-        </p>
+        <p class="movie-description"></p>
         <div class="movie__modal-btn-box">
-          <button type="button" class="button modal__movie-btn" id="watchedModalBtn">
+          <button
+            type="button"
+            class="button modal__movie-btn"
+            id="watchedModalBtn"
+          >
             Add to watched
           </button>
-          <button type="button" class="button modal__movie-btn" id="queueModalBtn">
+          <button
+            type="button"
+            class="button modal__movie-btn"
+            id="queueModalBtn"
+          >
             Add to queue
           </button>
         </div>
       </div>
-      <button type="button" class="modal-box__btn" data-action="close-modal" id="close">
- 
+      <button
+        type="button"
+        class="modal-box__btn"
+        data-action="close-modal"
+        id="close"
+      >
         <svg class="modal-box__btn--close" width="18" height="18">
           <use href="./images/icons.svg#icon-close"></use>
         </svg>
       </button>
     </div>
-    </div>
   </div>
-  
-
-
+</div>
