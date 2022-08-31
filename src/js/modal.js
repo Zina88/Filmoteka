@@ -1,4 +1,4 @@
-import { STORAGE_KEY_MOVIEID  } from './constants';
+import { STORAGE_KEY_MOVIE  } from './constants';
 import { openMovieCard } from './modalCardOpen';
 
 const refs = {
@@ -37,7 +37,7 @@ function onCloseModal() {
   refs.backdrop.classList.add('is-hidden');
   window.removeEventListener('keydown', onTargetKeydown);
   document.body.style.overflow = "";
-  localStorage.removeItem(STORAGE_KEY_MOVIEID);
+  localStorage.removeItem(STORAGE_KEY_MOVIE);
 }
 
 function onBackdropClick(e) {
