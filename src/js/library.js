@@ -8,4 +8,4 @@ import './getFromLocal';
 import './getMovieFromLocal';
 import './modalCardOpen';
 import './saveInLocalStorage';
-import '../js/displeyLibrary.js';
+import './displayLibrary.js';

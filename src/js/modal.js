@@ -1,5 +1,6 @@
-import { STORAGE_KEY_MOVIEID  } from './constants';
+import { STORAGE_KEY_MOVIEID } from './constants';
 import { openMovieCard } from './modalCardOpen';
+import { changeActiveOfBtns } from './displayLibrary.js';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -7,7 +8,6 @@ const refs = {
   closeModal: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.backdropMovie'),
   modal: document.querySelector('.movie-modal-wrap'),
-
 };
 
 refs.gallery.addEventListener('click', onGalleryClick);
@@ -30,13 +30,14 @@ function onGalleryClick(e) {
 function onOpenModal() {
   refs.backdrop.classList.remove('is-hidden');
   window.addEventListener('keydown', onTargetKeydown);
-  document.body.style.overflow = "hidden"; 
+  document.body.style.overflow = 'hidden';
+  // changeActiveOfBtns();
 }
 
 function onCloseModal() {
   refs.backdrop.classList.add('is-hidden');
   window.removeEventListener('keydown', onTargetKeydown);
-  document.body.style.overflow = "";
+  document.body.style.overflow = '';
   localStorage.removeItem(STORAGE_KEY_MOVIEID);
 }
 
@@ -54,9 +55,3 @@ function onTargetKeydown(e) {
     onCloseModal();
   }
 }
-
-
-
-
-
-
