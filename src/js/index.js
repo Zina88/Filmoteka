@@ -17,3 +17,4 @@ import '../js/pagination.js';
 import '../js/top-button.js';
 import '../js/modal.js';
 import '../js/buttonClick.js';
+import '../js/createLibrary.js';
