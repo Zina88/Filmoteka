@@ -639,12 +639,12 @@ function paginationBarBuilder(pageNumber, totalPages) {
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
 
-    leftDots.style.display = 'inline-flex';
+    leftDots.style.display = 'none';
     rightDots.style.display = 'none';
 
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-    leftDotsButton.style.display = 'none';
+    leftDotsButton.style.display = 'inline-flex';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 7 && pageNumber === 6) {
     firstPageButton.style.display = 'inline-flex';
@@ -679,6 +679,299 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   }
+
+  // 8 pages - Batman - OK
+
+  if (totalPages === 8 && pageNumber === 1) {
+    firstPageButton.style.display = 'none';
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'none';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'none';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 8 && pageNumber === 2) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'none';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 8 && pageNumber === 3) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+
+    rightDotsButton.style.display = 'none';
+    leftDotsButton.style.display = 'none';
+
+  } else if (totalPages === 8 && pageNumber === 4) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'inline-flex';
+    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
+  } else if (totalPages === 8 && pageNumber === 5) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'inline-flex';
+    rightDotsButton.style.display = 'none';
+    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
+
+  } else if (totalPages === 8 && pageNumber === 6) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'none';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 8 && pageNumber === 7) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'none';
+    lastPageButton.style.display = 'none';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 8 && pageNumber === 8) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'none';
+    secondLastButton.style.display = 'none';
+    lastPageButton.style.display = 'none';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'none';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+
+  }
+
+  // 9 pages - Quick - OK
+
+
+  if (totalPages === 9 && pageNumber === 1) {
+    firstPageButton.style.display = 'none';
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'none';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'none';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 9 && pageNumber === 2) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'none';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 9 && pageNumber === 3) {
+    firstPageButton.style.display = 'none';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 9 && pageNumber === 4) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'inline-flex';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 9 && pageNumber === 5) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'none';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'inline-flex';
+    rightDotsButton.style.display = 'inline-flex';
+    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
+    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
+  } else if (totalPages === 9 && pageNumber === 6) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'inline-flex';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+  } else if (totalPages === 9 && pageNumber === 7) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'inline-flex';
+    lastPageButton.style.display = 'none';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+
+  } else if (totalPages === 9 && pageNumber === 8) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'inline-flex';
+    secondLastButton.style.display = 'none';
+    lastPageButton.style.display = 'none';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+
+  } else if (totalPages === 9 && pageNumber === 9) {
+    firstPageButton.style.display = 'inline-flex';
+    secondLeftButton.style.display = 'inline-flex';
+    thirdLeftButton.style.display = 'inline-flex';
+
+    thirdLastButton.style.display = 'none';
+    secondLastButton.style.display = 'none';
+    lastPageButton.style.display = 'none';
+
+    leftDots.style.display = 'inline-flex';
+    rightDots.style.display = 'none';
+
+    nextButton.style.display = 'none';
+    previousButton.style.display = 'inline-flex';
+    leftDotsButton.style.display = 'none';
+    rightDotsButton.style.display = 'none';
+
+  }
+
   return totalPagesDisplay;
 }
 
