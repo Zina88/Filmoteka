@@ -67,36 +67,39 @@ console.log(movie);
 
 
 function checkWatchBtnStyle(movie) {
-    if (movieToWatched.length === 0) {
+    if ( !localStorage.getItem(STORAGE_KEY_WATCHED)=== false) {
+// saveOnLocalStorage(STORAGE_KEY_WATCHED, watchedEmptyArray);
+// }) {
         // console.log(STORAGE_KEY_WATCHED);
         // console.log(watched);
         // console.log(refs.addToWatch);
         refs.watchBtn.classList.remove('is-active__Btn');
         refs.watchBtn.textContent = 'Add to watched';
-        refs.watchBtn.addEventListener('click', saveToWatched(STORAGE_KEY_WATCHED, movie))
+        refs.watchBtn.addEventListener('click', saveToWatched(movie))
         return
     }
     if (movieToWatched.lenght !== 0 || movieToWatched.includes(movie)) {
-        refs.addToWatch.classList.add('is-active__Btn');
-        refs.addToWatch.textContent = 'Remove from watched';
-        refs.watchBtn.addEventListener('click', removeFromWatched(STORAGE_KEY_WATCHED, movie))
+        refs.watchBtn.classList.add('is-active__Btn');
+        refs.watchBtn.textContent = 'Remove from watched';
+        refs.watchBtn.addEventListener('click', removeFromWatched(movie))
         return
     }
 }
 
 function checkqueueBtnStyle(movie) {
-    if (movieToQueue.length === 0) {
+    if (!localStorage.getItem(STORAGE_KEY_QUEUE) === false) {
         refs.queueBtn.classList.remove('is-active__Btn');
         refs.queueBtn.textContent = 'Add to queue';
+        refs.queueBtn.addEventListener('click', saveToQueue(movie))
         return
     }
     if (movieToQueue.lenght !== 0 || movieToQueue.includes(movie)) {
 
-        if(movieToQueue)
         refs.queueBtn.classList.add('is-active__Btn');
         refs.queueBtn.textContent = 'Remove from watched';
-        
+        refs.queueBtn.addEventListener('click', removeFromQueue(movie))
         return
+    
     }
 }
 
@@ -105,11 +108,27 @@ function saveToWatched(movie) {
     movieToWatched.push(movie);
     console.log(movieToWatched);
     saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
+    return
 }
 
 function removeFromWatched(movie) {
-    movieToWatched.splice(movieToWatched[movie], 1)
+    // movieToWatched.splice(movieToWatched[movie], 1)
     saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
+    return
 }
+
+function saveToQueue(movie) {
+    movieToQueue.push(movie);
+    saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
+    return
+}
+
+function removeFromQueue(movie) {
+    // movieToQueue.splice(movieToWatched[movie], 1)
+    saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
+    return
+}
+
+
 
 
