@@ -45,9 +45,9 @@ async function onSearch(e) {
     const response = await movieApiService.moviesBySearch();
     const moviesArray = response.results;
 
-
     if (moviesArray.length === 0) {
-      errorSearch('Search result is not successful. Enter the correct movie name.')
+      errorSearch('Search result is not successful. Enter the correct movie name.');
+      totalMovieDisplay(1);
       return
     }
     updatePaginationBar(response.page, response.total_pages);

@@ -1,7 +1,8 @@
 //Oksana Bulakh
 
-import { STORAGE_KEY_MOVIES, STORAGE_KEY_MOVIE } from './constants';
+import { STORAGE_KEY_MOVIES, STORAGE_KEY_MOVIE, STORAGE_KEY_WATCHED, STORAGE_KEY_QUEUE } from './constants';
 import getMovieFromLocal from './getMovieFromLocal';
+import getFromLocal from './getFromLocal';
 import saveOnLocalStorage from './saveInLocalStorage';
 import getGenresFromLocal from './getGenresFromLocal';
 
@@ -13,7 +14,14 @@ const refs = {
     origTitleEl: document.querySelector('.movie__info-wrap-item-name'),
     genreEl: document.querySelector('.movie__info-item'),
     aboutEl: document.querySelector('.movie-description'),
+
+    watchBtn: document.querySelector("#watchedModalBtn"),
+    queueBtn: document.querySelector("#queueModalBtn"),
 }
+
+const movieToWatched = getFromLocal(STORAGE_KEY_WATCHED);
+const movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
+
 
 export async function openMovieCard(evt) {
     
@@ -45,4 +53,39 @@ export async function openMovieCard(evt) {
     refs.origTitleEl.textContent = originalTitle;
     refs.genreEl.textContent = genres;
     refs.aboutEl.textContent = about;
+}
+
+
+checkWatchBtnStyle();
+checkqueueBtnStyle();
+function checkWatchBtnStyle() {
+    if (movieToWatched.length === 0) {
+
+        // console.log(STORAGE_KEY_WATCHED);
+        // console.log(watched);
+        // console.log(refs.addToWatch);
+        refs.watchBtn.classList.remove('is-active__Btn');
+        refs.watchBtn.textContent = 'Add to watched';
+
+        refs.watchBtn.classList.remove('is-active__Btn');
+        refs.watchBtn.textContent = 'Add to queue';
+        return
+    }
+    if (movieToWatched.lenght !== 0 || movieToWatched.includes(movie)) {
+        refs.addToWatch.classList.add('is-active__Btn');
+        refs.addToWatch.textContent = 'Remove from watched';
+    }
+}
+function checkqueueBtnStyle() {
+    if (movieToQueue.length === 0) {
+        refs.queueBtn.classList.remove('is-active__Btn');
+        refs.queueBtn.textContent = 'Add to queue';
+        return
+    }
+    if (movieToQueue.lenght !== 0 || movieToQueue.includes(movie)) {
+
+        if(movieToQueue)
+        refs.queueBtn.classList.add('is-active__Btn');
+        refs.queueBtn.textContent = 'Remove from watched';
+    }
 }
