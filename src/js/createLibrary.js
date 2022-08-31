@@ -2,7 +2,7 @@ import {
   STORAGE_KEY_MOVIES,
   STORAGE_KEY_WATCHED,
   STORAGE_KEY_QUEUE,
-  STORAGE_KEY_MOVIEID,
+  STORAGE_KEY_MOVIE,
 } from './constants';
 
 import getFromLocal from './getFromLocal';
@@ -38,7 +38,7 @@ console.log(arrayAddToWatch);
 function onAddToWatchClick(e) {
   refs.addToWatch.classList.add('is-active__Btn');
   console.dir(e.currentTarget);
-  movieId = getFromLocal(STORAGE_KEY_MOVIEID);
+  movieId = getFromLocal(STORAGE_KEY_MOVIE);
   movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
   checkStorage();
 
