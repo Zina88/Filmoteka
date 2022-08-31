@@ -1,6 +1,6 @@
 //Oksana Bulakh
 
-import { STORAGE_KEY_MOVIES, STORAGE_KEY_MOVIEID } from './constants';
+import { STORAGE_KEY_MOVIES, STORAGE_KEY_MOVIE } from './constants';
 import getMovieFromLocal from './getMovieFromLocal';
 import saveOnLocalStorage from './saveInLocalStorage';
 import getGenresFromLocal from './getGenresFromLocal';
@@ -20,11 +20,9 @@ export async function openMovieCard(evt) {
     const clickOnCard = evt.target;
     const movieId = Number(clickOnCard.id);
     const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
-
-    
     
     const {
-        id: movieIdFromLocal,
+        id: movieOfId,
         poster_path: poster,
         title: titleMovie,
         vote_average: vote,
@@ -35,7 +33,7 @@ export async function openMovieCard(evt) {
         overview: about,
     } = movie;
 
-    saveOnLocalStorage(STORAGE_KEY_MOVIEID, movieIdFromLocal);
+    saveOnLocalStorage(STORAGE_KEY_MOVIE, movie);
     const rawGenres = await getGenresFromLocal(genreIds);
     const genres = `${rawGenres.join(", ")}`;
     const moviePoster = `https://image.tmdb.org/t/p/w500${poster}`;
