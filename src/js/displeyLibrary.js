@@ -1,18 +1,45 @@
-const libraryMessage = document.querySelector('.gallery-text');
-const watchedBtn = document.querySelector('.watched');
-const queueBtn = document.querySelector('.queue');
+import { STORAGE_KEY_WATCHED, STORAGE_KEY_QUEUE } from './constants';
+import getFromLocal from './getFromLocal';
+import createMoviesMarkupLibrary from './markupLibraryCard';
 
-watchedBtn.addEventListener('click', displeyWatched);
-queueBtn.addEventListener('click', displeyQueue);
+const refs = {
+  libraryGallery: document.querySelector('.gallery-library'),
+  libraryMessage: document.querySelector('.gallery-text'),
+  watchedBtn: document.querySelector('.watched'),
+  queueBtn: document.querySelector('.queue'),
+};
+
+refs.watchedBtn.addEventListener('click', displeyWatched);
+refs.queueBtn.addEventListener('click', displeyQueue);
 
 function displeyWatched() {
-  libraryMessage.textContent = 'Sorry, you have not added any film to your watched list yet.';
-  watchedBtn.classList.add('is-active');
-  queueBtn.classList.remove('is-active');
+  refs.watchedBtn.classList.add('is-active');
+  refs.queueBtn.classList.remove('is-active');
+  let getWathed = getFromLocal(STORAGE_KEY_WATCHED);
+  if (STORAGE_KEY_WATCHED === null || getWathed.lenght === 0) {
+    refs.libraryMessage.textContent =
+      'Sorry, you have not added any movie to your watched list yet.';
+  } else {
+    refs.libraryMessage.classList.add('is-hidden');
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createMoviesMarkupLibrary(getWathed)
+    );
+  }
 }
 
 function displeyQueue() {
-  libraryMessage.textContent = 'Sorry, you have not added any film to your queue yet.';
-  queueBtn.classList.add('is-active');
-  watchedBtn.classList.remove('is-active');
+  refs.queueBtn.classList.add('is-active');
+  refs.watchedBtn.classList.remove('is-active');
+  let getQueue = getFromLocal(STORAGE_KEY_QUEUE);
+  if (STORAGE_KEY_QUEUE === null || getQueue.lenght === 0) {
+    refs.libraryMessage.textContent =
+      'Sorry, you have not added any movie to your queue yet.';
+  } else {
+    refs.libraryMessage.classList.add('is-hidden');
+    refs.libraryGallery.insertAdjacentHTML(
+      'beforeend',
+      createMoviesMarkupLibrary(getQueue)
+    );
+  }
 }
