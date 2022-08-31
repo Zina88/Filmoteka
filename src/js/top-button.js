@@ -23,3 +23,5 @@ function scrollToTop() {
   });
 }
 scrollToTopBtn.addEventListener('click', scrollToTop);
+
+export default scrollToTop;

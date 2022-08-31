@@ -56,6 +56,6 @@ async function onSearch(e) {
   } catch (error) {
     console.log(error)
   }
-  movieApiService.query = "";
+  // movieApiService.query = "";
 }
 
