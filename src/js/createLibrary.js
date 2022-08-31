@@ -15,6 +15,8 @@ const refs = {
 };
 
 refs.watchedModal.addEventListener('click', addToWatched);
+// refs.queueModal.addEventListener('click', addToQueue);
+
 
 function addToWatched() {
   refs.watchedModal.classList.add('is-active__Btn');
@@ -22,9 +24,9 @@ function addToWatched() {
   let movieId = getFromLocal(STORAGE_KEY_MOVIEID);
   const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
 
-  //   if (getFromLocal(STORAGE_KEY_WATCHED)) {
-  //     watchedArr = getFromLocal(STORAGE_KEY_WATCHED);
-  //   }
+    if (getFromLocal(STORAGE_KEY_WATCHED)) {
+      watchedArr = getFromLocal(STORAGE_KEY_WATCHED);
+    }
 
   watchedArr.push(movie);
   saveOnLocalStorage(STORAGE_KEY_WATCHED, JSON.stringify(watchedArr));
