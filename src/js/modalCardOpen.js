@@ -19,9 +19,12 @@ const refs = {
     queueBtn: document.querySelector("#queueModalBtn"),
 }
 
+// refs.watchBtn.addEventListener('click', )
+
+
 const movieToWatched = getFromLocal(STORAGE_KEY_WATCHED);
 const movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
-
+console.log(movieToWatched);
 
 export async function openMovieCard(evt) {
     
@@ -53,30 +56,35 @@ export async function openMovieCard(evt) {
     refs.origTitleEl.textContent = originalTitle;
     refs.genreEl.textContent = genres;
     refs.aboutEl.textContent = about;
+
+    checkWatchBtnStyle(movie);
+    checkqueueBtnStyle(movie);
+
+console.log(movie);
+
 }
 
 
-checkWatchBtnStyle();
-checkqueueBtnStyle();
-function checkWatchBtnStyle() {
-    if (movieToWatched.length === 0) {
 
+function checkWatchBtnStyle(movie) {
+    if (movieToWatched.length === 0) {
         // console.log(STORAGE_KEY_WATCHED);
         // console.log(watched);
         // console.log(refs.addToWatch);
         refs.watchBtn.classList.remove('is-active__Btn');
         refs.watchBtn.textContent = 'Add to watched';
-
-        refs.watchBtn.classList.remove('is-active__Btn');
-        refs.watchBtn.textContent = 'Add to queue';
+        refs.watchBtn.addEventListener('click', saveToWatched(STORAGE_KEY_WATCHED, movie))
         return
     }
     if (movieToWatched.lenght !== 0 || movieToWatched.includes(movie)) {
         refs.addToWatch.classList.add('is-active__Btn');
         refs.addToWatch.textContent = 'Remove from watched';
+        refs.watchBtn.addEventListener('click', removeFromWatched(STORAGE_KEY_WATCHED, movie))
+        return
     }
 }
-function checkqueueBtnStyle() {
+
+function checkqueueBtnStyle(movie) {
     if (movieToQueue.length === 0) {
         refs.queueBtn.classList.remove('is-active__Btn');
         refs.queueBtn.textContent = 'Add to queue';
@@ -87,5 +95,21 @@ function checkqueueBtnStyle() {
         if(movieToQueue)
         refs.queueBtn.classList.add('is-active__Btn');
         refs.queueBtn.textContent = 'Remove from watched';
+        
+        return
     }
 }
+
+
+function saveToWatched(movie) {
+    movieToWatched.push(movie);
+    console.log(movieToWatched);
+    saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
+}
+
+function removeFromWatched(movie) {
+    movieToWatched.splice(movieToWatched[movie], 1)
+    saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
+}
+
+
