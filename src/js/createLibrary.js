@@ -10,27 +10,20 @@ import getMovieFromLocal from './getMovieFromLocal';
 import saveOnLocalStorage from './saveInLocalStorage';
 
 const refs = {
-  watchedModal: document.querySelector('#watchedModalBtn'),
-  queueModal: document.querySelector('#queueModalBtn'),
+  addToWatch: document.querySelector('#watchedModalBtn'),
+  addToQueue: document.querySelector('#queueModalBtn'),
 };
-
-// refs.watchedModal.addEventListener('click', addToWatched);
-// refs.queueModal.addEventListener('click', addToQueue);
-
 
 refs.addToWatch.addEventListener('click', onAddToWatchClick);
 // refs.addToQueue.addEventListener('click', onAddToQueueClick);
 
 let arrayFromLocal = getFromLocal(STORAGE_KEY_MOVIES);
-
 let movieId = '';
-// let movieId = getFromLocal(STORAGE_KEY_MOVIEID);
 let movie = '';
-// const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
 
-console.log(arrayFromLocal);
-console.log(movie);
-console.log(movieId);
+// console.log(arrayFromLocal);
+// console.log(movie);
+// console.log(movieId);
 
 let arrayAddToWatch = [];
 // let arrayAddToQueue = [];
@@ -40,17 +33,21 @@ if (localStorage.getItem('arrayAddToWatch') !== null) {
   arrayAddToWatch = JSON.parse(arrayAddToWatch);
 }
 
+console.log(arrayAddToWatch);
+
 function onAddToWatchClick(e) {
+  refs.addToWatch.classList.add('is-active__Btn');
   console.dir(e.currentTarget);
   movieId = getFromLocal(STORAGE_KEY_MOVIEID);
-  console.log(movieId);
   movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
-  console.log(movie);
-  changeActiveOfBtns();
+  checkStorage();
+
+  if (refs.addToWatch.textContent === 'Remove from watched') {
+    removeFromWathed();
+  }
 }
 
-// Проверка наличия фильмов
-function changeActiveOfBtns(movieId) {
+function checkStorage(movieId) {
   if (arrayAddToWatch.includes(movieId)) {
     console.log('уже есть в просмотренных');
     refs.addToWatch.textContent = 'Remove from watched';
@@ -64,29 +61,14 @@ function changeActiveOfBtns(movieId) {
 // добавлениe фильмов в просмотренные
 function addToWatched() {
   console.log(movieId);
-
   arrayAddToWatch.push(movieId);
-
   localStorage.setItem('arrayAddToWatch', JSON.stringify(arrayAddToWatch));
   console.log(arrayAddToWatch);
+  refs.addToWatch.textContent = 'Remove from watched';
 }
 
-
-
-// function addToWatched() {
-//   refs.watchedModal.classList.add('is-active__Btn');
-//   let watchedArr = [];
-//   let movieId = getFromLocal(STORAGE_KEY_MOVIEID);
-//   const movie = getMovieFromLocal(STORAGE_KEY_MOVIES, movieId);
-
-//     if (getFromLocal(STORAGE_KEY_WATCHED)) {
-//       watchedArr = getFromLocal(STORAGE_KEY_WATCHED);
-//     }
-
-//   watchedArr.push(movie);
-//   saveOnLocalStorage(STORAGE_KEY_WATCHED, JSON.stringify(watchedArr));
-
-//   refs.watchedModal.textContent = 'remove from watched';
-
-//   console.log(watchedArr);
-// }
+function removeFromWathed() {
+  const removeIndex = arrayAddToWatch.indexOf(movieId);
+  arrayAddToWatch.slice(removeIndex, 1);
+  localStorage.setItem('arrayAddToWatch', JSON.stringify(arrayAddToWatch));
+}
