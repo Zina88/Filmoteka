@@ -10,6 +10,7 @@ import getMovieFromLocal from './getMovieFromLocal';
 import getFromLocal from './getFromLocal';
 import saveOnLocalStorage from './saveInLocalStorage';
 import getGenresFromLocal from './getGenresFromLocal';
+import { get } from 'lodash';
 
 const refs = {
   titleEl: document.querySelector('.movie__title'),
@@ -125,7 +126,7 @@ function checkqueueBtnStyle(movie, movieOfId) {
   }
 }
 
-function saveToWatched(movie, index) {
+export function saveToWatched(movie, index) {
   movieToWatched.push(movie);
   saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
   refs.watchBtn.removeEventListener('click', saveToWatched);
@@ -135,35 +136,33 @@ function saveToWatched(movie, index) {
   refs.watchBtn.addEventListener('click', () =>
     removeFromWatched(movie, index)
   );
-
   return;
 }
 
-function removeFromWatched(movie, index) {
+export function removeFromWatched(movie, index) {
   movieToWatched.splice(index, 1);
   saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
   refs.watchBtn.removeEventListener('click', removeFromWatched);
   refs.watchBtn.classList.remove('is-active__Btn');
   refs.watchBtn.textContent = 'Add to watched';
-  refs.watchBtn.removeEventListener('click', saveToWatched);
   refs.watchBtn.addEventListener('click', () => saveToWatched(movie, index));
   return;
 }
 
-function saveToQueue(movie, index) {
+export function saveToQueue(movie, index) {
   movieToQueue.push(movie);
   saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
-  refs.queueBtn.removeEventListener('click', removeFromQueue);
+  refs.queueBtn.removeEventListener('click', saveToQueue);
   refs.queueBtn.classList.add('is-active__Btn');
   refs.queueBtn.textContent = 'Remove from queue';
   refs.queueBtn.addEventListener('click', () => removeFromQueue(movie, index));
   return;
 }
 
-function removeFromQueue(movie, index) {
+export function removeFromQueue(movie, index) {
   movieToQueue.splice(index, 1);
   saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
-  refs.queueBtn.removeEventListener('click', saveToQueue);
+  refs.queueBtn.removeEventListener('click', removeFromQueue);
   refs.queueBtn.classList.remove('is-active__Btn');
   refs.queueBtn.textContent = 'Add to queue';
   refs.queueBtn.addEventListener('click', () => saveToQueue(movie, index));
