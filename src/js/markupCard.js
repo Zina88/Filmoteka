@@ -1,11 +1,8 @@
-import getGenresFromLocal from './getGenresFromLocal';
-import { STORAGE_KEY_GENRES, STORAGE_KEY_WATCHED, STORAGE_KEY_QUEUE } from './constants';
-import saveOnLocalStorage from './saveInLocalStorage';
+import checkAmountGenres from './checkAmountGenres';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
 };
-
 
 export async function appendMoviesMarkup(Array) {
   refs.gallery.insertAdjacentHTML('beforeend', await createMoviesMarkup(Array));
@@ -17,20 +14,14 @@ export async function createMoviesMarkup(Array) {
       title,
       name,
       release_date: releaseDate,
+      first_date: firstDate,
       genre_ids: genresIdsArray,
       poster_path,
     }) => {
       const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
-      const placeholderImg =
-        'https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg';
+      const placeholderImg ='https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg';
 
-      const genresOfMovie = await getGenresFromLocal(genresIdsArray);
-      let genres;
-      if (genresOfMovie.length > 3) {
-        genres = `${genresOfMovie.slice(0, 3).join(', ')}, ...other`;
-        return;
-      }
-      genres = genresOfMovie.join(', ');
+      const genres = checkAmountGenres(genresIdsArray);
       const movieMarkup = `<li class="card-item" id="${movieId}">
         <a class="card-link" id="${movieId}" href="${
         poster_path !== null ? poster : placeholderImg
@@ -41,17 +32,14 @@ export async function createMoviesMarkup(Array) {
         <div class="card-discr">
         <p class="card-title" id="${movieId}">${title ? title : name}</p>
         <ul class="box">
-            <li class="card-genres" id="${movieId}">${
-        genres ? genres : 'Unknown'
-      }</li>
+            <li class="card-genres" id="${movieId}">${genres}</li>
             <li class="card-data" id="${movieId}">${
-        // releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
-        releaseDate ? releaseDate.slice(0, 4) : 'Unknown'
+        releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
       }</li>
         </ul>
         </div>
         </a>    
-    </li>`;
+    </li>`
       return movieMarkup;
     }
   );
