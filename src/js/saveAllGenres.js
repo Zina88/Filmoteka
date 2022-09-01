@@ -2,7 +2,7 @@
 
 import MovieApiService from './movieApiService';
 import saveOnLocalStorage from './saveInLocalStorage';
-import { STORAGE_KEY_GENRES, STORAGE_KEY_WATCHED, STORAGE_KEY_QUEUE } from './constants';
+import { STORAGE_KEY_GENRES } from './constants';
 
 const movieApiService = new MovieApiService();
 
