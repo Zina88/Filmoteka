@@ -71,10 +71,11 @@
 }
 
 .card-genres, .card-data {
-    font-size: 10px;
+    font-size: 12px;
+    line-height: 1.33;
     color: #FF6B08;
     @media screen and (min-width: 1280px) {
-    font-size: 16px;
+    font-size: 20px;
     }
 }
 
