@@ -50,7 +50,6 @@ transform: translate(-50%, 2%) scale(1);
     height: 600px;   
     top: 50%;
     left: 50%;
-
    
     transform: translate(-50%, -50%) scale(1);
     transition: transform 300ms $transition-timing-function;
@@ -146,6 +145,6 @@ transform: translate(-50%, 2%) scale(1);
 
 
 .grid-box{
-  background-color: aqua;
+  background-color:rgb(168, 160, 160);
  padding-top: 8px;
 }
