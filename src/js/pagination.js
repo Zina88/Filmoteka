@@ -59,21 +59,27 @@ function paginationBarBuilder(pageNumber, totalPages) {
     rightDots.style.display = 'inline-block';
   } else if (pageNumber === 2) {
     totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
-    allButtonsShow();
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex'; // mob
     leftDotsButton.style.display = 'none';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`; // mob
     thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
     secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
+    lastPageButton.style.display = 'inline-flex';
+
+
   } else if (pageNumber === 3) {
     totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
-    allButtonsShow();
-    secondLeftButton.style.display = 'none';
+    secondLeftButton.style.display = 'inline-flex'; // mob
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
     secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
@@ -85,6 +91,13 @@ function paginationBarBuilder(pageNumber, totalPages) {
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
+
+    nextButton.style.display = 'inline-flex';
+    previousButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
+    lastPageButton.style.display = 'inline-flex';
+
+
   } else if (pageNumber === 4) {
     totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
@@ -248,7 +261,7 @@ function paginationBarBuilder(pageNumber, totalPages) {
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 2 && pageNumber === 2) {
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     leftDots.style.display = 'none';
@@ -256,7 +269,7 @@ function paginationBarBuilder(pageNumber, totalPages) {
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   }
@@ -277,7 +290,7 @@ function paginationBarBuilder(pageNumber, totalPages) {
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 3 && pageNumber === 2) {
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     leftDots.style.display = 'none';
@@ -285,7 +298,7 @@ function paginationBarBuilder(pageNumber, totalPages) {
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 3 && pageNumber === 3) {
@@ -319,9 +332,9 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 4 && pageNumber === 2) {
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
@@ -376,9 +389,9 @@ function paginationBarBuilder(pageNumber, totalPages) {
     rightDotsButton.style.display = 'inline-flex';
     rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 5 && pageNumber === 2) {
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
@@ -447,9 +460,9 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 6 && pageNumber === 2) {
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
@@ -461,8 +474,8 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 6 && pageNumber === 3) {
-    firstPageButton.style.display = 'inline-flex';
-    secondLeftButton.style.display = 'none';
+    firstPageButton.style.display = 'none';
+    secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
@@ -531,9 +544,9 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 7 && pageNumber === 2) {
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
@@ -544,8 +557,8 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 7 && pageNumber === 3) {
-    firstPageButton.style.display = 'inline-flex';
-    secondLeftButton.style.display = 'none';
+    firstPageButton.style.display = 'none';
+    secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
@@ -627,9 +640,9 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 8 && pageNumber === 2) {
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
@@ -640,8 +653,8 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 8 && pageNumber === 3) {
-    firstPageButton.style.display = 'inline-flex';
-    secondLeftButton.style.display = 'none';
+    firstPageButton.style.display = 'none';
+    secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
@@ -737,9 +750,9 @@ function paginationBarBuilder(pageNumber, totalPages) {
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 9 && pageNumber === 2) {
-    firstPageButton.style.display = 'inline-flex';
+    firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
-    thirdLeftButton.style.display = 'none';
+    thirdLeftButton.style.display = 'inline-flex';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
@@ -857,7 +870,7 @@ export const updatePaginationBar = (currentPage, lastPage) => {
 }
 
 export async function totalMovieDisplay(currentPage) {
-  scrollToTop();
+  // scrollToTop();
   let moviesToShow = null;
   if (movieService.query) {
     moviesToShow = await movieService.moviesBySearch(currentPage);

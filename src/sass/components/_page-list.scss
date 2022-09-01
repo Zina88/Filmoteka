@@ -71,7 +71,8 @@
   background: none;
 }
 
-.left-wing-dots, .right-wing-dots {
+.left-wing-dots,
+.right-wing-dots {
   margin-left: 8px;
   margin-right: 8px;
 
@@ -81,4 +82,17 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+}
+
+.wing-controls {
+  display: inline-flex;
+  align-items: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.no-wing-controls {
+  display: inline-flex;
+  align-items: center;
 }
