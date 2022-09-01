@@ -27,13 +27,11 @@ function displeyWatched() {
   refs.watchedBtn.disabled = true;
   refs.queueBtn.disabled = false;
 
-  // refs.libraryGallery.innerHTML = '';
-
   if (movieToWatched.length !== 0) {
     console.log(createMoviesMarkupLibrary(movieToWatched));
     refs.libraryGallery.innerHTML = createMoviesMarkupLibrary(movieToWatched);
   } else {
-    refs.libraryMessage.textContent =
+    refs.libraryGallery.innerHTML =
       'Sorry, you have not added any movie to your watched list yet.';
   }
 }
@@ -44,13 +42,10 @@ function displeyQueue() {
   refs.watchedBtn.disabled = false;
   refs.queueBtn.disabled = true;
 
-  // refs.libraryGallery.innerHTML = '';
-
   if (movieToQueue.length !== 0) {
-    refs.libraryGallery.innerHTML;
-    createMoviesMarkupLibrary(movieToQueue);
+    refs.libraryGallery.innerHTML = createMoviesMarkupLibrary(movieToQueue);
   } else {
-    refs.libraryMessage.textContent =
+    refs.libraryGallery.innerHTML =
       'Sorry, you have not added any movie to your queue yet.';
   }
 }
