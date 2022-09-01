@@ -25,16 +25,11 @@
     width: 100px;
     height: 100px;
    }
-
-  
-
     &:hover {
         fill: $button-hover;
         transform: translateY(-20px);
         filter: hue-rotate(60deg);
     }
-
-
 }
 
 
@@ -44,7 +39,6 @@
 }
 
 .upp-button {
-
     transition: fill $button-hover;
     background-position: center;
     background-repeat: no-repeat;
