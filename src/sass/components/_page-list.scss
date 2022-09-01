@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  & p {
+  & span {
     display: inline-block;
     font-family: 'Roboto';
     font-style: normal;
@@ -42,7 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  & > p {
+  & > span {
     color: #000000;
   }
 }
@@ -59,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  & p {
+  & span {
     color: #ffffff;
   }
 }

@@ -23,7 +23,7 @@ leftDots.style.display = 'none';
 const thirdLastButton = document.querySelector('[data-action-last-third]');
 const secondLastButton = document.querySelector('[data-action-last-second]');
 const lastPageButton = document.querySelector('[data-action-last]');
-const lastPageButtonLabel = document.querySelector('[data-action-last] > p');
+const lastPageButtonLabel = document.querySelector('[data-action-last] > span');
 const nextButton = document.querySelector('[data-action-next]');
 const rightDotsButton = document.querySelector('[data-action-right-dots]');
 rightDotsButton.style.display = 'none';
@@ -39,169 +39,174 @@ let lastPageNumber = null;
 function paginationBarBuilder(pageNumber, totalPages) {
   let totalPagesDisplay = '';
 
+  if (totalPages === 1) {
+    totalPagesPlaceHolder.style.display = 'none';
+  } else {
+    totalPagesPlaceHolder.style.display = 'flex';
+  }
   if (pageNumber === 1) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     startButtonsShow();
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
   } else if (pageNumber === 2) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
   } else if (pageNumber === 3) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
   } else if (pageNumber === 4) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
   } else if (pageNumber === 5) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'inline-flex';
-    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    leftDotsButton.innerHTML = `<span>${pageNumber - 3}</span>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-block';
   }
 
   else if (pageNumber === totalPages) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     finnishButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'inline-block';
     rightDots.style.display = 'none';
   } else if (pageNumber === totalPages - 1) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'inline-block';
     rightDots.style.display = 'none';
   } else if (pageNumber === totalPages - 2) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'inline-block';
     rightDots.style.display = 'none';
   } else if (pageNumber === totalPages - 3) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'inline-block';
     rightDots.style.display = 'none';
   } else if (pageNumber === totalPages - 4) {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'inline-flex';
-    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
+    rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
     leftDots.style.display = 'inline-block';
     rightDots.style.display = 'none';
   }
   else {
-    totalPagesDisplay = `<div class="current-page"><p>${pageNumber}</p></div>`;
+    totalPagesDisplay = `<div class="current-page"><span>${pageNumber}</span></div>`;
     allButtonsShow();
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    secondLeftButton.innerHTML = `<p>${pageNumber - 2}</p>`;
-    thirdLeftButton.innerHTML = `<p>${pageNumber - 1}</p>`;
+    secondLeftButton.innerHTML = `<span>${pageNumber - 2}</span>`;
+    thirdLeftButton.innerHTML = `<span>${pageNumber - 1}</span>`;
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
-    thirdLastButton.innerHTML = `<p>${pageNumber + 1}</p>`;
-    secondLastButton.innerHTML = `<p>${pageNumber + 2}</p>`;
+    thirdLastButton.innerHTML = `<span>${pageNumber + 1}</span>`;
+    secondLastButton.innerHTML = `<span>${pageNumber + 2}</span>`;
     rightDotsButton.style.display = 'none';
     leftDots.style.display = 'inline-block';
     rightDots.style.display = 'inline-block';
@@ -210,7 +215,6 @@ function paginationBarBuilder(pageNumber, totalPages) {
   // Total Pages Adaptation 
 
   // Сделать холдер исчезающим при 0 страницах
-  console.log(totalPages);
 
   if (totalPages === 1) {
     // 1 page - John Wick
@@ -318,14 +322,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -334,14 +335,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -350,14 +348,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -370,31 +365,25 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'inline-flex';
-    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
+    rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 5 && pageNumber === 2) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -403,14 +392,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -419,14 +405,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -436,19 +419,16 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
     rightDotsButton.style.display = 'none'
     leftDotsButton.style.display = 'inline-flex';
-    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
+    leftDotsButton.innerHTML = `<span>${pageNumber - 3}</span>`;
   }
 
   // 6 pages - Ukrain - OK
@@ -457,106 +437,80 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'none';
-
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 6 && pageNumber === 2) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-
     rightDotsButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
-
+    rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 6 && pageNumber === 3) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 6 && pageNumber === 4) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   } else if (totalPages === 6 && pageNumber === 5) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-
     rightDotsButton.style.display = 'none';
     leftDotsButton.style.display = 'inline-flex';
-    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
-
+    leftDotsButton.innerHTML = `<span>${pageNumber - 3}</span>`;
   } else if (totalPages === 6 && pageNumber === 6) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
-
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
   }
@@ -567,14 +521,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
@@ -583,14 +534,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -599,33 +547,25 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-
     rightDotsButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
-    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
-
+    rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 7 && pageNumber === 4) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -634,14 +574,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'inline-flex';
@@ -650,14 +587,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -666,14 +600,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -686,14 +617,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
@@ -702,14 +630,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -718,67 +643,52 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
-
     rightDotsButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
-
   } else if (totalPages === 8 && pageNumber === 4) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'inline-flex';
-    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
+    rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 8 && pageNumber === 5) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'inline-flex';
     rightDotsButton.style.display = 'none';
-    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
-
+    leftDotsButton.innerHTML = `<span>${pageNumber - 3}</span>`;
   } else if (totalPages === 8 && pageNumber === 6) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -787,14 +697,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -803,36 +710,28 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
-
   }
 
   // 9 pages - Quick - OK
-
 
   if (totalPages === 9 && pageNumber === 1) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'none';
     leftDotsButton.style.display = 'none';
@@ -841,14 +740,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'none';
     thirdLeftButton.style.display = 'none';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -857,14 +753,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'none';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -873,14 +766,11 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'inline-flex';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -889,32 +779,26 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'none';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'inline-flex';
     rightDotsButton.style.display = 'inline-flex';
-    leftDotsButton.innerHTML = `<p>${pageNumber - 3}</p>`;
-    rightDotsButton.innerHTML = `<p>${pageNumber + 3}</p>`;
+    leftDotsButton.innerHTML = `<span>${pageNumber - 3}</span>`;
+    rightDotsButton.innerHTML = `<span>${pageNumber + 3}</span>`;
   } else if (totalPages === 9 && pageNumber === 6) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'inline-flex';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
@@ -923,92 +807,67 @@ function paginationBarBuilder(pageNumber, totalPages) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'inline-flex';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
-
   } else if (totalPages === 9 && pageNumber === 8) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'inline-flex';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'inline-flex';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
-
   } else if (totalPages === 9 && pageNumber === 9) {
     firstPageButton.style.display = 'inline-flex';
     secondLeftButton.style.display = 'inline-flex';
     thirdLeftButton.style.display = 'inline-flex';
-
     thirdLastButton.style.display = 'none';
     secondLastButton.style.display = 'none';
     lastPageButton.style.display = 'none';
-
     leftDots.style.display = 'inline-flex';
     rightDots.style.display = 'none';
-
     nextButton.style.display = 'none';
     previousButton.style.display = 'inline-flex';
     leftDotsButton.style.display = 'none';
     rightDotsButton.style.display = 'none';
-
   }
-
   return totalPagesDisplay;
 }
 
-
-
-
 export const updatePaginationBar = (currentPage, lastPage) => {
-
   currentPageNumber = currentPage;
   lastPageNumber = lastPage;
-
   totalPagesPlaceHolder.innerHTML = paginationBarBuilder(
     currentPage,
     lastPage
   );
-
   lastPageButtonLabel.innerHTML = lastPage;
-
 }
 
 export async function totalMovieDisplay(currentPage) {
   scrollToTop();
-
   let moviesToShow = null;
-
   if (movieService.query) {
     moviesToShow = await movieService.moviesBySearch(currentPage);
   } else {
     moviesToShow = await movieService.popularMovies(currentPage);
   };
-
   let results = moviesToShow.results;
   results = moviesToShow.results;
   saveOnLocalStorage(STORAGE_KEY_MOVIES, results);
-
   updatePaginationBar(currentPage, moviesToShow.total_pages);
-
   mainGallery.innerHTML = await createMoviesMarkup(results);
 }
 
@@ -1061,7 +920,22 @@ function secondLastShow() {
   totalMovieDisplay(currentPageNumber);
 }
 
-// ===========================
+// Dots Buttons
+
+leftDotsButton.addEventListener('click', leftDotsPage);
+rightDotsButton.addEventListener('click', rightDotsPage);
+
+function leftDotsPage() {
+  currentPageNumber -= 3;
+  totalMovieDisplay(currentPageNumber);
+}
+
+function rightDotsPage() {
+  currentPageNumber += 3;
+  totalMovieDisplay(currentPageNumber);
+}
+
+// Buttons Show-Hide
 
 function allButtonsShow() {
   nextButton.style.display = 'inline-flex';
