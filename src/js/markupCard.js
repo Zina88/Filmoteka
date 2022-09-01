@@ -5,10 +5,7 @@ import saveOnLocalStorage from './saveInLocalStorage';
 const refs = {
   gallery: document.querySelector('.gallery'),
 };
-const watchedEmptyArray = [];
-    const QueueEmptyArray = [];
-  saveOnLocalStorage(STORAGE_KEY_WATCHED, watchedEmptyArray);
-    saveOnLocalStorage(STORAGE_KEY_QUEUE, QueueEmptyArray);
+
 
 export async function appendMoviesMarkup(Array) {
   refs.gallery.insertAdjacentHTML('beforeend', await createMoviesMarkup(Array));

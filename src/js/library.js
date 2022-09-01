@@ -1,4 +1,5 @@
 import '../sass/main.scss';
+import './markupCard';
 import './loader';
 import '../js/footer-modal.js';
 import './modal.js';
