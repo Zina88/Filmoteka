@@ -34,7 +34,7 @@ export async function createMoviesMarkup(Array) {
         <ul class="box">
             <li class="card-genres" id="${movieId}">${genres}</li>
             <li class="card-data" id="${movieId}">${
-        releaseDate ? releaseDate.slice(0, 4) : firstDate.slice(0, 4)
+        releaseDate ? releaseDate.slice(0, 4) : "Uknown"
       }</li>
         </ul>
         </div>
