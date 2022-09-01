@@ -15,7 +15,6 @@ function scrollFunction() {
   }
 }
 
-// Функция скрола наверх страницы при клике на кнопку
 function scrollToTop() {
   rootElement.scrollTo({
     top: 0,
