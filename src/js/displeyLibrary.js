@@ -3,7 +3,6 @@ import getFromLocal from './getFromLocal';
 import createMoviesMarkupLibrary from './markupLibraryCard';
 
 const refs = {
-  libraryMessage: document.querySelector('.library'),
   libraryGallery: document.querySelector('.gallery-library'),
   watchedBtn: document.querySelector('.watched'),
   queueBtn: document.querySelector('.queue'),
