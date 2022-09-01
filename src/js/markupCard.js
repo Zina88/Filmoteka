@@ -4,11 +4,11 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
-export async function appendMoviesMarkup(Array) {
-  refs.gallery.insertAdjacentHTML('beforeend', await createMoviesMarkup(Array));
+export async function appendMoviesMarkup(array) {
+  refs.gallery.insertAdjacentHTML('beforeend', await createMoviesMarkup(array));
 }
-export async function createMoviesMarkup(Array) {
-  let moviesMarkup = Array.map(
+export async function createMoviesMarkup(array) {
+  let moviesMarkup = array.map(
     async ({
       id: movieId,
       title,
@@ -19,7 +19,8 @@ export async function createMoviesMarkup(Array) {
       poster_path,
     }) => {
       const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
-      const placeholderImg ='https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg';
+      const placeholderImg =
+        'https://image.tmdb.org/t/p/w500/AcKVlWaNVVVFQwro3nLXqPljcYA.jpg';
 
       const genres = checkAmountGenres(genresIdsArray);
       const movieMarkup = `<li class="card-item" id="${movieId}">
@@ -39,7 +40,7 @@ export async function createMoviesMarkup(Array) {
         </ul>
         </div>
         </a>    
-    </li>`
+    </li>`;
       return movieMarkup;
     }
   );
@@ -47,4 +48,3 @@ export async function createMoviesMarkup(Array) {
   moviesMarkup = moviesMarkup.join('');
   return moviesMarkup;
 }
-

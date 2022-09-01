@@ -2,6 +2,7 @@ import { STORAGE_KEY_WATCHED, STORAGE_KEY_QUEUE } from './constants';
 import getFromLocal from './getFromLocal';
 import createMoviesMarkupLibrary from './markupLibraryCard';
 import { appendMoviesMarkup } from './markupCard';
+import { createMoviesMarkup } from './markupCard';
 
 const refs = {
   libraryGallery: document.querySelector('.gallery-library'),
@@ -13,19 +14,26 @@ const refs = {
 refs.watchedBtn.addEventListener('click', displeyWatched);
 refs.queueBtn.addEventListener('click', displeyQueue);
 
-
 movieToWatched = getFromLocal(STORAGE_KEY_WATCHED);
 movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
-appendMoviesMarkup(STORAGE_KEY_WATCHED);
+
+// if (movieToWatched !== null) {
+//   displeyWatched();
+//   // refs.watchedBtn.disabled('click');
+// } else {
+//   refs.libraryMessage.textContent =
+//     'Sorry, you have not added any movie to your watched list yet.';
+// }
 
 function displeyWatched() {
   refs.watchedBtn.classList.add('is-active');
   refs.queueBtn.classList.remove('is-active');
 
-  refs.libraryGallery.innerHTML = "";
-  appendMoviesMarkup(movieToWatched);
+  // refs.libraryGallery.innerHTML = '';
+  // appendMoviesMarkup(movieToWatched);
 
   let getWathed = getFromLocal(STORAGE_KEY_WATCHED);
+  console.log(getWathed);
   if (STORAGE_KEY_WATCHED === null || getWathed.lenght === 0) {
     refs.libraryMessage.textContent =
       'Sorry, you have not added any movie to your watched list yet.';
@@ -41,7 +49,7 @@ function displeyWatched() {
 function displeyQueue() {
   refs.queueBtn.classList.add('is-active');
   refs.watchedBtn.classList.remove('is-active');
-  refs.libraryGallery.innerHTML = "";
+  refs.libraryGallery.innerHTML = '';
   appendMoviesMarkup(movieToQueue);
 
   let getQueue = getFromLocal(STORAGE_KEY_QUEUE);
