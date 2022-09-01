@@ -9,7 +9,6 @@ import { appendMoviesMarkup } from './markupCard';
 import errorSearch from "./error-search.js "
 import { updatePaginationBar } from './pagination';
 
-
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
@@ -17,12 +16,12 @@ const refs = {
 };
 
 refs.searchForm.addEventListener("submit", onSearch);
-const movieApiService = new MovieApiService();
 refs.input.addEventListener("input", debounce(onInputClearn, DEBOUNCE_DELAY));
-
+const movieApiService = new MovieApiService();
 
 function onInputClearn() {
   if (refs.input.value.trim() === "") {
+    movieApiService.query = "";
     totalMovieDisplay(1);
     errorSearch("Please, enter your search query.");
     return
@@ -35,6 +34,7 @@ async function onSearch(e) {
   const inputValue = e.currentTarget.elements.searchQuery.value.trim();
 
   if (inputValue === "") {
+    movieApiService.query = "";
     errorSearch("Please, enter your search query.");
     totalMovieDisplay(1);
     return
@@ -46,6 +46,7 @@ async function onSearch(e) {
     const moviesArray = response.results;
 
     if (moviesArray.length === 0) {
+      movieApiService.query = "";
       errorSearch('Search result is not successful. Enter the correct movie name.');
       totalMovieDisplay(1);
       return
@@ -56,6 +57,5 @@ async function onSearch(e) {
   } catch (error) {
     console.log(error)
   }
-  // movieApiService.query = "";
 }
 
