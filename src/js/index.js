@@ -1,4 +1,5 @@
 import '../sass/main.scss';
+import './saveAllGenres';
 import '../js/onSearch.js';
 import '../js/footer-modal.js';
 import './error-search';
