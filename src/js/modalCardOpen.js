@@ -21,14 +21,19 @@ const refs = {
 }
 
 let movieToWatched = [];
-let movieToQueue = [];
+let movieToQueue = []; 
 
-if (movieToWatched === null) {
-    saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
-    
-} else if (movieToQueue === null) {
-    saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
+try {
+    toWatched = getFromLocal(STORAGE_KEY_WATCHED);
+    toQueue = getFromLocal(STORAGE_KEY_QUEUE);
+    if (toWatched === null && toQueue === null) {
+        saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
+        saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
+    } 
+} catch (error) {
+    console.log(error);
 }
+
 
 export async function openMovieCard(evt) {
     
@@ -88,22 +93,25 @@ function checkWatchBtnStyle(movie, movieOfId) {
 }
    
     
-
 function checkqueueBtnStyle(movie, movieOfId) {
-    movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
-    const finedFilmFromQueue = movieToQueue.find(item => item.id === movieOfId);
-    const indexfinedFilm = movieToQueue.indexOf(finedFilmFromQueue);
-    
-    if (finedFilmFromQueue) {
-        refs.queueBtn.classList.add('is-active__Btn');
-        refs.queueBtn.textContent = 'Remove from queue';
-        refs.queueBtn.addEventListener('click', () => removeFromQueue(movie, indexfinedFilm))
-        return
-    } else {
-        refs.queueBtn.classList.remove('is-active__Btn');
-        refs.queueBtn.textContent = 'Add to queue';
-        refs.queueBtn.addEventListener('click', () => saveToQueue(movie, indexfinedFilm))
-        return
+    try {
+        movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
+        const finedFilmFromQueue = movieToQueue.find(item => item.id === movieOfId);
+        const indexfinedFilm = movieToQueue.indexOf(finedFilmFromQueue);
+        
+        if (finedFilmFromQueue) {
+            refs.queueBtn.classList.add('is-active__Btn');
+            refs.queueBtn.textContent = 'Remove from queue';
+            refs.queueBtn.addEventListener('click', () => removeFromQueue(movie, indexfinedFilm))
+            return
+        } else {
+            refs.queueBtn.classList.remove('is-active__Btn');
+            refs.queueBtn.textContent = 'Add to queue';
+            refs.queueBtn.addEventListener('click', () => saveToQueue(movie, indexfinedFilm))
+            return
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 
