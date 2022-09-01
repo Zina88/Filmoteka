@@ -28,7 +28,10 @@ let movieToWatched = [];
 let movieToQueue = [];
 
 try {
-  if (getFromLocal(STORAGE_KEY_WATCHED) === null && getFromLocal(STORAGE_KEY_QUEUE) === null) {
+  if (
+    getFromLocal(STORAGE_KEY_WATCHED) === null &&
+    getFromLocal(STORAGE_KEY_QUEUE) === null
+  ) {
     saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
     saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
   }

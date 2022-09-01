@@ -10,39 +10,33 @@ const refs = {
   watchedBtn: document.querySelector('.watched'),
   queueBtn: document.querySelector('.queue'),
 };
-
 refs.watchedBtn.addEventListener('click', displeyWatched);
 refs.queueBtn.addEventListener('click', displeyQueue);
 
-movieToWatched = getFromLocal(STORAGE_KEY_WATCHED);
-movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
+let movieToWatched = getFromLocal(STORAGE_KEY_WATCHED);
+let movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
 
-// if (movieToWatched !== null) {
-//   displeyWatched();
-//   // refs.watchedBtn.disabled('click');
-// } else {
-//   refs.libraryMessage.textContent =
-//     'Sorry, you have not added any movie to your watched list yet.';
-// }
+displeyWatched();
 
 function displeyWatched() {
   refs.watchedBtn.classList.add('is-active');
   refs.queueBtn.classList.remove('is-active');
 
-  // refs.libraryGallery.innerHTML = '';
-  // appendMoviesMarkup(movieToWatched);
+  refs.libraryGallery.innerHTML = '';
+  appendMoviesMarkup(movieToWatched);
 
   let getWathed = getFromLocal(STORAGE_KEY_WATCHED);
   console.log(getWathed);
-  if (STORAGE_KEY_WATCHED === null || getWathed.lenght === 0) {
+
+  if (getWathed === null) {
     refs.libraryMessage.textContent =
       'Sorry, you have not added any movie to your watched list yet.';
   } else {
     refs.libraryMessage.classList.add('is-hidden');
-    refs.libraryGallery.insertAdjacentHTML(
-      'beforeend',
-      createMoviesMarkupLibrary(getWathed)
-    );
+    // refs.libraryGallery.insertAdjacentHTML(
+    //   'beforeend'
+    // createMoviesMarkupLibrary(getWathed)
+    // );
   }
 }
 
@@ -58,9 +52,9 @@ function displeyQueue() {
       'Sorry, you have not added any movie to your queue yet.';
   } else {
     refs.libraryMessage.classList.add('is-hidden');
-    refs.libraryGallery.insertAdjacentHTML(
-      'beforeend',
-      createMoviesMarkupLibrary(getQueue)
-    );
+    // refs.libraryGallery.insertAdjacentHTML(
+    //   'beforeend',
+    //   createMoviesMarkupLibrary(getQueue)
+    // );
   }
 }
