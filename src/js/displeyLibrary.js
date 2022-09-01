@@ -21,9 +21,10 @@ appendMoviesMarkup(STORAGE_KEY_WATCHED);
 function displeyWatched() {
   refs.watchedBtn.classList.add('is-active');
   refs.queueBtn.classList.remove('is-active');
-appendMoviesMarkup(movieToWatched);
 
-  console.log(appendMoviesMarkup);
+  refs.libraryGallery.innerHTML = "";
+  appendMoviesMarkup(movieToWatched);
+
   let getWathed = getFromLocal(STORAGE_KEY_WATCHED);
   if (STORAGE_KEY_WATCHED === null || getWathed.lenght === 0) {
     refs.libraryMessage.textContent =
@@ -40,7 +41,8 @@ appendMoviesMarkup(movieToWatched);
 function displeyQueue() {
   refs.queueBtn.classList.add('is-active');
   refs.watchedBtn.classList.remove('is-active');
-appendMoviesMarkup(movieToQueue);
+  refs.libraryGallery.innerHTML = "";
+  appendMoviesMarkup(movieToQueue);
 
   let getQueue = getFromLocal(STORAGE_KEY_QUEUE);
   if (STORAGE_KEY_QUEUE === null || getQueue.lenght === 0) {

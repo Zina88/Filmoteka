@@ -23,12 +23,10 @@ const refs = {
 let movieToWatched = [];
 let movieToQueue = [];
 
-
 if (movieToWatched === null) {
     saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
     
 } else if (movieToQueue === null) {
-    console.log("Пустой массив записан");
     saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
 }
 
@@ -67,12 +65,11 @@ export async function openMovieCard(evt) {
     checkqueueBtnStyle(movie, movieOfId);
 }
 
-
-
 function checkWatchBtnStyle(movie, movieOfId) {
+    try {
         movieToWatched = getFromLocal(STORAGE_KEY_WATCHED);
-    const finedFilmFromWatch = movieToWatched.find(item => item.id === movieOfId);
-    const indexfinedFilm = movieToWatched .indexOf(finedFilmFromWatch);
+        let finedFilmFromWatch = movieToWatched.find(item => item.id === movieOfId);
+        const indexfinedFilm = movieToWatched.indexOf(finedFilmFromWatch);
     
         if (finedFilmFromWatch) {
             refs.watchBtn.classList.add('is-active__Btn');
@@ -85,55 +82,71 @@ function checkWatchBtnStyle(movie, movieOfId) {
             refs.watchBtn.addEventListener('click', () => saveToWatched(movie, indexfinedFilm))
             return
         }
+    } catch (error) {
+        console.log(error)
     }
-
-
-    function checkqueueBtnStyle(movie, movieOfId) {
-        movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
-        const finedFilmFromQueue = movieToQueue.find(item => item.id === movieOfId);
-        const indexfinedFilm = movieToQueue.indexOf(finedFilmFromQueue);
+}
+   
     
-        if (finedFilmFromQueue) {
-            refs.queueBtn.classList.add('is-active__Btn');
-            refs.queueBtn.textContent = 'Remove from queue';
-            refs.queueBtn.addEventListener('click', () => removeFromQueue(movie, indexfinedFilm))
-            return
-        } else {
-            refs.queueBtn.classList.remove('is-active__Btn');
-            refs.queueBtn.textContent = 'Add to queue';
-            refs.queueBtn.addEventListener('click', () => saveToQueue(movie, indexfinedFilm))
-            return
-        }
+
+function checkqueueBtnStyle(movie, movieOfId) {
+    movieToQueue = getFromLocal(STORAGE_KEY_QUEUE);
+    const finedFilmFromQueue = movieToQueue.find(item => item.id === movieOfId);
+    const indexfinedFilm = movieToQueue.indexOf(finedFilmFromQueue);
+    
+    if (finedFilmFromQueue) {
+        refs.queueBtn.classList.add('is-active__Btn');
+        refs.queueBtn.textContent = 'Remove from queue';
+        refs.queueBtn.addEventListener('click', () => removeFromQueue(movie, indexfinedFilm))
+        return
+    } else {
+        refs.queueBtn.classList.remove('is-active__Btn');
+        refs.queueBtn.textContent = 'Add to queue';
+        refs.queueBtn.addEventListener('click', () => saveToQueue(movie, indexfinedFilm))
+        return
     }
+}
 
 function saveToWatched(movie, index) {
     movieToWatched.push(movie);
     saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
-    refs.watchBtn.removeEventListener(movie, index);
+    refs.watchBtn.removeEventListener('click', saveToWatched);
+    
+    refs.watchBtn.classList.add('is-active__Btn');
+    refs.watchBtn.textContent = 'Remove from watched';
+    refs.watchBtn.addEventListener('click', () => removeFromWatched(movie, index))
+
     return
 }
 
 function removeFromWatched(movie, index) {
     movieToWatched.splice(index, 1)
     saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
-    refs.watchBtn.removeEventListener(movie, index);
-    console.log(index)
+    refs.watchBtn.removeEventListener('click', removeFromWatched);
+    refs.watchBtn.classList.remove('is-active__Btn');
+    refs.watchBtn.textContent = 'Add to watched';
+    refs.watchBtn.removeEventListener('click', saveToWatched);
+    refs.watchBtn.addEventListener('click', () => saveToWatched(movie, index))
     return
 }
 
-function saveToQueue(movie) {
+function saveToQueue(movie, index) {
     movieToQueue.push(movie);
     saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
-    refs.watchBtn.removeEventListener(movie, index);
-    
+    refs.queueBtn.removeEventListener('click', removeFromQueue);
+    refs.queueBtn.classList.add('is-active__Btn');
+    refs.queueBtn.textContent = 'Remove from queue';
+    refs.queueBtn.addEventListener('click', () => removeFromQueue(movie, index))
     return
 }
 
 function removeFromQueue(movie, index) {
     movieToQueue.splice(index, 1)
     saveOnLocalStorage(STORAGE_KEY_QUEUE, movieToQueue);
-    refs.watchBtn.removeEventListener(movie, index);
-    console.log(index)
+    refs.queueBtn.removeEventListener('click', saveToQueue);
+    refs.queueBtn.classList.remove('is-active__Btn');
+    refs.queueBtn.textContent = 'Add to queue';
+    refs.queueBtn.addEventListener('click', () => saveToQueue(movie, index))
     return
 }
 
