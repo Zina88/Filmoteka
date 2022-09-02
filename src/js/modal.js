@@ -1,6 +1,6 @@
 import { STORAGE_KEY_MOVIE } from './constants';
-import { openMovieCard } from './modalCardOpen';
 import {
+  openMovieCard,
   watchButtonListener,
   queueButtonDeleteListener,
   queueButtonSaveListener,
