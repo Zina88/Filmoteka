@@ -1,6 +1,6 @@
-import { STORAGE_KEY_MOVIE  } from './constants';
+import { STORAGE_KEY_MOVIE } from './constants';
 import { openMovieCard } from './modalCardOpen';
-import { saveToWatched, removeFromWatched, saveToQueue, removeFromQueue } from './modalCardOpen';
+import {saveToQueue, removeFromQueue, watchButtonListener, queueButtonDeleteListener, queueButtonSaveListener } from './modalCardOpen';
 
 
 
@@ -36,7 +36,7 @@ function onGalleryClick(e) {
 function onOpenModal() {
   refs.backdrop.classList.remove('is-hidden');
   window.addEventListener('keydown', onTargetKeydown);
-  document.body.style.overflow = "hidden"; 
+  document.body.style.overflow = "hidden";
 }
 
 function onCloseModal() {
@@ -44,10 +44,12 @@ function onCloseModal() {
   window.removeEventListener('keydown', onTargetKeydown);
   document.body.style.overflow = "";
   localStorage.removeItem(STORAGE_KEY_MOVIE);
-  refs.watchBtn.removeEventListener('click', saveToWatched);
-  refs.watchBtn.removeEventListener('click', removeFromWatched);
-  refs.queueBtn.removeEventListener('click', saveToQueue);
-  refs.queueBtn.removeEventListener('click', removeFromQueue);
+  if (watchButtonListener !== null) {
+    refs.watchBtn.removeEventListener('click', watchButtonListener);
+    watchButtonListener = null;
+  }
+  refs.queueBtn.removeEventListener('click', queueButtonDeleteListener);
+  refs.queueBtn.removeEventListener('click', queueButtonSaveListener);
 }
 
 function onBackdropClick(e) {
