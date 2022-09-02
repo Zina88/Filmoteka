@@ -1,8 +1,10 @@
 import { STORAGE_KEY_MOVIE } from './constants';
 import { openMovieCard } from './modalCardOpen';
-import {saveToQueue, removeFromQueue, watchButtonListener, queueButtonDeleteListener, queueButtonSaveListener } from './modalCardOpen';
-
-
+import {
+  watchButtonListener,
+  queueButtonDeleteListener,
+  queueButtonSaveListener,
+} from './modalCardOpen';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -13,7 +15,6 @@ const refs = {
 
   watchBtn: document.querySelector('#watchedModalBtn'),
   queueBtn: document.querySelector('#queueModalBtn'),
-
 };
 
 refs.gallery.addEventListener('click', onGalleryClick);
@@ -36,13 +37,13 @@ function onGalleryClick(e) {
 function onOpenModal() {
   refs.backdrop.classList.remove('is-hidden');
   window.addEventListener('keydown', onTargetKeydown);
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = 'hidden';
 }
 
 function onCloseModal() {
   refs.backdrop.classList.add('is-hidden');
   window.removeEventListener('keydown', onTargetKeydown);
-  document.body.style.overflow = "";
+  document.body.style.overflow = '';
   localStorage.removeItem(STORAGE_KEY_MOVIE);
   if (watchButtonListener !== null) {
     refs.watchBtn.removeEventListener('click', watchButtonListener);
@@ -66,9 +67,3 @@ function onTargetKeydown(e) {
     onCloseModal();
   }
 }
-
-
-
-
-
-
