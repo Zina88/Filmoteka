@@ -179,5 +179,6 @@ export function removeFromQueue(movie, index) {
   refs.queueBtn.textContent = 'Add to queue';
   queueButtonSaveListener = () => saveToQueue(movie, index);
   refs.queueBtn.addEventListener('click', queueButtonSaveListener);
+window.location.reload();
   return;
 }
