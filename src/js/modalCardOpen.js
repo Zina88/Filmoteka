@@ -10,7 +10,6 @@ import getMovieFromLocal from './getMovieFromLocal';
 import getFromLocal from './getFromLocal';
 import saveOnLocalStorage from './saveInLocalStorage';
 import getGenresFromLocal from './getGenresFromLocal';
-import { get } from 'lodash';
 
 const refs = {
   titleEl: document.querySelector('.movie__title'),
