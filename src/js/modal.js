@@ -1,10 +1,8 @@
 import { STORAGE_KEY_MOVIE } from './constants';
-import {
-  openMovieCard,
-  watchButtonListener,
-  queueButtonDeleteListener,
-  queueButtonSaveListener,
-} from './modalCardOpen';
+import { openMovieCard } from './modalCardOpen';
+import { watchButtonListener } from './modalCardOpen';
+import { queueButtonDeleteListener } from './modalCardOpen';
+import { queueButtonSaveListener } from './modalCardOpen';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
