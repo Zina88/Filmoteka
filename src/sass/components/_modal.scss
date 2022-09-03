@@ -104,6 +104,14 @@
     width: 375px;
     height: 478px;
   }
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 5px 10px #ff6b08 inset, 0 0 10px 1px #ff6b08;
+    scale: 1.02;
+  }
 }
 
 .movie__img {
@@ -266,7 +274,11 @@
   background-color: #ffffff;
   cursor: pointer;
 
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    scale 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:first-child {
     margin-right: 15px;
@@ -277,7 +289,9 @@
     background-color: $accent-color;
     border-color: $accent-color;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    scale: 1.05;
   }
+
   &.added-to-storage {
     background: $accent-color;
     color: #ffffff;
