@@ -2,14 +2,13 @@ Filmoteka
 
 Проект сайта кинопоиска
 
-Над проектом работала группа-7:
+Над проектом работала team-7:
 
-- Anna_Chumakova
-- Inna-Demchuck
-- Irina
-- Kristian
-- Oksana Bulakh
-- Lora
-- oksyluka
-- the-most-trained-trainee
-- Zina88
+- Team-lead: Zina Sytnik
+- Scrum master: Irina Mykhailova
+- Developer: Anna_Chumakova
+- Developer: Kristian Dziamka
+- Developer: Oksana Bulakh
+- Developer: Larysa Tymoshyna
+- Developer: Oksana Luka
+- Developer: Oleh Lavrenko
