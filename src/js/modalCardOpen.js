@@ -24,9 +24,9 @@ const refs = {
   queueBtn: document.querySelector('#queueModalBtn'),
 };
 
-export let watchButtonListener = null;
-export let queueButtonSaveListener = null;
-export let queueButtonDeleteListener = null;
+let watchButtonListener = null;
+let queueButtonSaveListener = null;
+let queueButtonDeleteListener = null;
 
 let movieToWatched = [];
 let movieToQueue = [];
@@ -149,14 +149,13 @@ export function saveToWatched(movie) {
 }
 
 export function removeFromWatched(movie) {
-  console.log('ebala');
-
   movieToWatched = movieToWatched.filter(
     watchedMovie => watchedMovie.id !== movie.id
   );
   saveOnLocalStorage(STORAGE_KEY_WATCHED, movieToWatched);
   refs.watchBtn.classList.remove('is-active__Btn');
   refs.watchBtn.textContent = 'Add to watched';
+  window.location.reload();
 }
 
 export function saveToQueue(movie, index) {
@@ -179,6 +178,6 @@ export function removeFromQueue(movie, index) {
   refs.queueBtn.textContent = 'Add to queue';
   queueButtonSaveListener = () => saveToQueue(movie, index);
   refs.queueBtn.addEventListener('click', queueButtonSaveListener);
-window.location.reload();
+  window.location.reload();
   return;
 }
